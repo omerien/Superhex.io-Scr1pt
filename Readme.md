@@ -23,8 +23,25 @@
 * Función que muestra/oculta los FPS y otros datos cuando se presiona 2 (dos).
 * Disponible en Inglés y Español.
 
-# 🔰 View on [GreasyFork](https://greasyfork.org/es/scripts/36071-superhex-io-scr1pt)
+## ✳️  View on [GreasyFork](https://greasyfork.org/es/scripts/36071-superhex-io-scr1pt)
 
-# 🔰 [Donate/Donar](https://www.paypal.me/TBM13)
+## ✳️  [Donate/Donar](https://www.paypal.me/TBM13)
 
+_______________________________________________
 
+# 🔰 Next version development
+
+## 🔧 Working on/Doing:
+* Improve UI.
+
+## 📝 To do list:
+* Add style to checkboxes.
+* Add dark theme.
+* Maybe add another theme?
+
+## ✅ Done:
+* Add mini mode.
+* Improve buttons.
+
+## ❌ Discarded:
+* Zoom hack control with mouse wheel/keys. (I tried this, but there was no success)
