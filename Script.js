@@ -4,17 +4,21 @@
 // @version      1.7.0
 // @license      GPL-3.0
 // @homepageURL  https://github.com/Truebamateo/Superhex.io-Scr1pt
+// @contributionURL https://www.paypal.me/tbm13
 // @icon         http://superhex.io/img/fav_icon_1.png
-// @description  Script for Superhex.io
-// @description:es-ES Script para Superhex.io
-// @author       Truebamateo
+// @description  Mod for Superhex.io
+// @description:es-ES Mod para Superhex.io
+// @author       TBM13
 // @match        http://superhex.io/*
 // @grant        none
-// @contributionURL https://www.paypal.me/tbm13
 
 // ==/UserScript==
 
 var Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), miniMode = localStorage.getItem("miniModeTBM");
+var style = document.createElement("style");
+style.type = "text/css";
+style.innerHTML = 'button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white;  background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.3s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #4a934a; color: #cccccc; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #387038;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;} button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;} .scr1ptCheckbox {position: absolute; width: 30px; height: 30px; background-color: #484848; top: 180px; left: 85px; transition: 0.3s;}	 .scr1ptCheckbox.selected:before {content: ""; position: absolute; width: 50px; height: 50px;  background-image: url("img/check-symbol.png"); background-size: 100% 100%; top: -15px; left: -4px; transition: 0.3s;}	.skinpopup .card .checkbox {position: absolute; width: 30px; height: 30px; background-color: #484848; top: 180px; left: 85px; transition: 0.3s;} .skinpopup .card .checkbox.selected:before {content: ""; position: absolute;  width: 50px; height: 50px; background-image: url("img/check-symbol.png"); background-size: 100% 100%; top: -15px; left: -4px; transition: 0.3s;}';
+document.getElementsByTagName("head")[0].appendChild(style);
 var adsDeleted = false,
 skinPag = 1,
 superhex = window.superhex,
@@ -29,7 +33,7 @@ keyActionsTxt = "Keys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Sho
 partyTxt = "Party ID:", party5Txt = "The ID of the Party can't be less than 5.", party6Txt = "The ID of the Party can't be greater than 6.",
 zoomTxt = "Zoom hack enabled.", zoomTxt2 = "Zoom hack disabled. The changes will take effect when the page is reloaded.",
 miniModeTxt = "Mini Mode enabled.", miniModeTxt2 = "Mini mode disabled. The changes will take effect when the page is reloaded.",
-highQB, MediumQB, lowQB;
+highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn;
 
 window.changeLang = function(write, ing) {
   if(ing) {
@@ -87,7 +91,7 @@ window.changeLang = function(write, ing) {
     miniModeTxt = "Modo Mini habilitado.";
     miniModeTxt2 = "Modo Mini deshabilitado. Los cambios tendrán efecto cuando se recargue la página.";
     highQB.innerText = "Alta";
-    MediumQB.innerText = "Media";
+    mediumQB.innerText = "Media";
     lowQB.innerText = "Baja";
     Language = "ES";
     if(write) {
@@ -104,8 +108,11 @@ window.onload = function () {
   skinLeftArrow = document.getElementById("skin-left-arrow");
   skinRightArrow.setAttribute("onclick", "skinChangePage(true, 1)");
   skinLeftArrow.setAttribute("onclick", "skinChangePage(false, 1)");
+  playBtn = document.getElementById("button-play");
+  playAgBtn = document.getElementById("button-play-again");
+  mMenuBtn = document.getElementById("button-main-menu");
   highQB = document.getElementById("button-quality-high");
-  MediumQB = document.getElementById("button-quality-medium");
+  mediumQB = document.getElementById("button-quality-medium");
   lowQB = document.getElementById("button-quality-low");
   if(Language == "ES") this.changeLang(false, false);
   if(AdsTBM) this.removeAds(false);
@@ -113,9 +120,15 @@ window.onload = function () {
   if(Text1TBM) document.getElementById("button-play-text").innerText = Text1TBM;
   if(currQuality == null) this.changeQuality(0.75); else this.changeQuality(currQuality);
   if(zoomHack == "True") this.zoomH(false);
+  if(playBtn.className == "green") playBtn.setAttribute("class", "scr1ptGreen");
+  if(playAgBtn.className == "playagain green") playAgBtn.setAttribute("class", "playagain scr1ptGreen");
+  if(mMenuBtn.className == "mainmenu grey") mMenuBtn.setAttribute("class", "mainmenu scr1ptGrey");
   highQB.setAttribute("onclick", "changeQuality(1);");
-  MediumQB.setAttribute("onclick", "changeQuality(0.75);");
+  if(highQB.className == "green") highQB.setAttribute("class", "scr1ptGreen"); else highQB.setAttribute("class", "scr1ptGreen unselected");
+  mediumQB.setAttribute("onclick", "changeQuality(0.75);");
+  if(mediumQB.className == "green") mediumQB.setAttribute("class", "scr1ptGreen"); else mediumQB.setAttribute("class", "scr1ptGreen unselected");
   lowQB.setAttribute("onclick", "changeQuality(0.5);");
+  if(lowQB.className == "green") lowQB.setAttribute("class", "scr1ptGreen"); else lowQB.setAttribute("class", "scr1ptGreen unselected");
 };
 
 window.skinChangePage = function(next, cantidad) {
@@ -178,9 +191,9 @@ window.changeQuality = function(qualityValue) {
   currQuality = localStorage.getItem("quality");
   if(Language == "ES") btn2.innerText = "Calidad personalizada"; else btn2.innerText = "Custom Quality";
   if(currQuality != 1 && currQuality != 0.75 && currQuality != 0.5) {
-    btn2.setAttribute("class", "green");
+    btn2.setAttribute("class", "scr1ptGreen");
     btn2.innerText = btn2.innerText + " (" + currQuality.toString() + ")";
-  } else btn2.setAttribute("class", "green unselected");
+  } else btn2.setAttribute("class", "scr1ptGreen unselected");
 };
 
 window.removeAds = function(checkBox) {
@@ -361,7 +374,7 @@ window.zoomH = function(message) {
   } else {
     Math.max = function(){return 13;}
     if(message) {
-      localStorage.setItem("zoomTBM", "True");      
+      localStorage.setItem("zoomTBM", "True");
       alert(zoomTxt);
     }
   }
@@ -382,7 +395,7 @@ window.miniM = function(msg) {
     document.getElementById("scrText2").remove();
     document.getElementById("homepage").appendChild(e);
     if(msg) {
-      localStorage.setItem("miniModeTBM", "True");  
+      localStorage.setItem("miniModeTBM", "True");
       alert(miniModeTxt);
     }
   }
@@ -400,7 +413,7 @@ scrText1.innerText = "Superhex.io Scr1pt v1.7";
 
 var btn = document.createElement("Button");
 btn.setAttribute("style", "position: fixed; top: 140px; left: 30px; height:25px; width:140px;");
-btn.setAttribute("class", "green");
+btn.setAttribute("class", "scr1ptGreen");
 btn.setAttribute("type", "button");
 btn.setAttribute("id", "btn");
 btn.innerText = "GitHub";
@@ -408,7 +421,7 @@ btn.setAttribute("onclick", "goGitHub();");
 document.getElementById("homepage").appendChild(btn);
 
 var btn2 = document.createElement("Button");
-btn2.setAttribute("class", "green unselected");
+btn2.setAttribute("class", "scr1ptGreen unselected");
 btn2.setAttribute("type", "button");
 btn2.setAttribute("id", "btn2");
 btn2.innerText = "Custom Quality";
@@ -417,7 +430,7 @@ document.getElementById("button-quality-high").parentElement.appendChild(btn2);
 
 var btnGF = document.createElement("Button");
 btnGF.setAttribute("style", "position: fixed; top: 175px; left: 30px; height:25px; width:140px;");
-btnGF.setAttribute("class", "green");
+btnGF.setAttribute("class", "scr1ptGreen");
 btnGF.setAttribute("type", "button");
 btnGF.setAttribute("id", "btnGF");
 btnGF.innerText = "Greasy Fork";
@@ -426,7 +439,7 @@ document.getElementById("homepage").appendChild(btnGF);
 
 var btn3 = document.createElement("Button");
 btn3.setAttribute("style", "position: fixed; top: 210px; left: 30px; height:25px; width:140px;");
-btn3.setAttribute("class", "green");
+btn3.setAttribute("class", "scr1ptGreen");
 btn3.setAttribute("type", "button");
 btn3.setAttribute("id", "btn3");
 btn3.innerText = "Set Skin (ID)";
@@ -435,7 +448,7 @@ document.getElementById("homepage").appendChild(btn3);
 
 var btn5 = document.createElement("Button");
 btn5.setAttribute("style", "position: fixed; top: 245px; left: 30px; height:25px; width:140px;");
-btn5.setAttribute("class", "green");
+btn5.setAttribute("class", "scr1ptGreen");
 btn5.setAttribute("type", "button");
 btn5.setAttribute("id", "btn5");
 btn5.innerText = "Set Play button text";
@@ -459,7 +472,7 @@ document.getElementById("homepage").appendChild(check1Text);
 
 var btn6 = document.createElement("Button");
 btn6.setAttribute("style", "position: fixed; top: 280px; left: 30px; height:25px; width:140px;");
-btn6.setAttribute("class", "green");
+btn6.setAttribute("class", "scr1ptGreen");
 btn6.setAttribute("type", "button");
 btn6.setAttribute("id", "btn6");
 btn6.innerText = "Unlock skins";
@@ -468,7 +481,7 @@ document.getElementById("homepage").appendChild(btn6);
 
 var btn8 = document.createElement("Button");
 btn8.setAttribute("style", "position: fixed; top: 315px; left: 30px; height:25px; width:140px;");
-btn8.setAttribute("class", "green");
+btn8.setAttribute("class", "scr1ptGreen");
 btn8.setAttribute("type", "button");
 btn8.setAttribute("id", "btn8");
 btn8.innerText = "Create Party";
@@ -477,7 +490,7 @@ document.getElementById("homepage").appendChild(btn8);
 
 var btn7 = document.createElement("Button");
 btn7.setAttribute("style", "position: fixed; top: 350px; left: 30px; height:25px; width:140px;");
-btn7.setAttribute("class", "green");
+btn7.setAttribute("class", "scr1ptGreen");
 btn7.setAttribute("type", "button");
 btn7.setAttribute("id", "btn7");
 btn7.innerText = "Español (Spanish)";
