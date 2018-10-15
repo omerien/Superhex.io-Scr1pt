@@ -17,42 +17,41 @@
 var Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), miniMode = localStorage.getItem("miniModeTBM");
 var style = document.createElement("style");
 style.type = "text/css";
-style.innerHTML = 'button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white;  background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.3s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #4a934a; color: #cccccc; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #387038;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;} button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;} .scr1ptCheckbox {position: absolute; width: 30px; height: 30px; background-color: #484848; top: 180px; left: 85px; transition: 0.3s;}	 .scr1ptCheckbox.selected:before {content: ""; position: absolute; width: 50px; height: 50px;  background-image: url("img/check-symbol.png"); background-size: 100% 100%; top: -15px; left: -4px; transition: 0.3s;}	.skinpopup .card .checkbox {position: absolute; width: 30px; height: 30px; background-color: #484848; top: 180px; left: 85px; transition: 0.3s;} .skinpopup .card .checkbox.selected:before {content: ""; position: absolute;  width: 50px; height: 50px; background-image: url("img/check-symbol.png"); background-size: 100% 100%; top: -15px; left: -4px; transition: 0.3s;}';
+style.innerHTML = 'button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white;  background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.3s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #4a934a; color: #cccccc; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #387038;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;} button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';
 document.getElementsByTagName("head")[0].appendChild(style);
 var adsDeleted = false,
 skinPag = 1,
 superhex = window.superhex,
-adsRestoredTxt = "Ads restored. The changes will take effect when the page is reloaded.", adBlockedTxt = "Ad blocked by Superhex.io Scr1pt", adsRemovedTxt = "Ads removed.",
-qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Setting the quality higher than 2.7 may cause problems.", q01Txt = "WARNING: Setting the quality lower than 0.1 may cause problems.", qInvalidTxt = "Invalid quality. You can only insert numbers.\nExample: 1.2", qNotChangedTxt = "Quality not changed.", qChangedTxt = "Quality changed to: ",
-sChangeTxt = "Skin ID:\nNote: To set the Skin 0 should use 0.1", sInvalidTxt = "Invalid ID. You can only insert numbers.", s0Txt = "Skin changed to: 0", sNotChangedTxt = "Skin not changed.", sChangedTxt = "Skin changed to: ", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin ", sNoExist = " doesn't exist. Enter a number less than 10.",
+adsRestoredTxt = "Ads restored. To see the changes, reload the page.", adBlockedTxt = "Ad blocked by Superhex.io Scr1pt", adsRemovedTxt = "Ads removed.",
+qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Set the quality higher than 2.7 may cause problems.", q01Txt = "WARNING: Set the quality lower than 0.1 may cause problems.", qInvalidTxt = "Invalid value. You can only insert numbers.\nExample: 1.2", qNotChangedTxt = "Quality not changed.", qChangedTxt = "Quality changed to: ",
+sChangeTxt = "Skin ID:\nNote: To set the Skin 0 use 0.1", sInvalidTxt = "Invalid ID. You can only insert numbers.", s0Txt = "Skin changed to: 0", sNotChangedTxt = "Skin not changed.", sChangedTxt = "Skin changed to: ", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin ", sNoExist = " doesn't exist. Enter a number less than 10.",
 pTextTxt = "Play button text:", pTextNotChangedTxt = "Play button text not changed.", pTextChangedTxt = "Play button text changed to: ",
 sUnlockekdTxt = "You already have the skins unlocked.", sUnlockedsTxt = "The following skins were unlocked:", sChickenTxt = "Yellow chicken.", sBirdTxt = "Light blue bird.", sCowTxt = "Cow.", sBird2Txt = "Red bird.", sElephantTxt = "Elephant.",
-loadingScriptTxt = "Loading Superhex.io Scr1pt...",
+loadingScriptTxt = "Loading Superhex.io Scr1pt...", loadingInfoTxt = "If the script doesn't load, refresh the page (F5).",
 sAlreadyTxt = "You are already using the skin ",
 keyActionsTxt = "Keys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Show/hide FPS and other data.",
 partyTxt = "Party ID:", party5Txt = "The ID of the Party can't be less than 5.", party6Txt = "The ID of the Party can't be greater than 6.",
-zoomTxt = "Zoom hack enabled.", zoomTxt2 = "Zoom hack disabled. The changes will take effect when the page is reloaded.",
-miniModeTxt = "Mini Mode enabled.", miniModeTxt2 = "Mini mode disabled. The changes will take effect when the page is reloaded.",
+zoomTxt = "Zoom hack enabled.", zoomTxt2 = "Zoom hack disabled. To see the changes, reload the page.",
+miniModeTxt = "Mini Mode enabled.", miniModeTxt2 = "Mini mode disabled. To see the changes, reload the page.",
 highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn;
 
 window.changeLang = function(write, ing) {
   if(ing) {
     localStorage.setItem('LangTBM', 'EN');
-    alert("Language changed to English. The changes will take effect when the page is reloaded.");
+    alert("Language changed to English. To see the changes, reload the page.");
 		document.getElementById("btn7").innerText = "Español (Spanish)";
 		document.getElementById("btn7").setAttribute("onclick", "changeLang(true, false);");
   } else {
-		loadingScriptTxt = "Cargando Superhex.io Scr1pt...";
-    adsRestoredTxt = "Anuncios restaurados. Para que sean visibles, es necesario recargar la página.";
+    adsRestoredTxt = "Anuncios restaurados. Para ver los cambios, recarga la página.";
     adBlockedTxt = "Anuncio bloqueado por Superhex.io Scr1pt";
     adsRemovedTxt = "Anuncios removidos.";
     qChangeTxt = "Insertar valor. Ejemplo:\n0.25: Muy baja\n0.5: Baja\n0.75: Media\n1: Alta\n1.5: Muy alta\n2: Ultra";
     q27Txt = "ADVERTENCIA: Establecer la calidad mayor a 2.7 puede causar problemas.";
     q01Txt = "ADVERTENCIA: Establecer la calidad menor a 0.1 puede causar problemas.";
-    qInvalidTxt = "Calidad inválida. Solo puedes insertar números.\nEjemplo: 1.2";
+    qInvalidTxt = "Valor inválido. Solo puedes insertar números.\nEjemplo: 1.2";
     qNotChangedTxt = "Calidad no cambiada.";
     qChangedTxt = "Calidad cambiada a: ";
-    sChangeTxt = "ID de la Skin:\nNota: Para establecer la skin 0 se debe utilizar 0.1";
+    sChangeTxt = "ID de la Skin:\nNota: Para establecer la skin 0 use 0.1";
     sInvalidTxt = "ID inválido. Solo puedes insertar números.";
     s0Txt = "Skin cambiada a: 0";
     sNotChangedTxt = "Skin no cambiada.";
@@ -87,9 +86,9 @@ window.changeLang = function(write, ing) {
 		document.getElementById("btn8").innerText = "Crear Party";
     document.getElementById("scrText2").innerText = keyActionsTxt;
     zoomTxt = "Hack de Zoom habilitado.";
-    zoomTxt2 = "Hack de Zoom deshabilitado. Los cambios tendrán efecto cuando se recargue la página.";
+    zoomTxt2 = "Hack de Zoom deshabilitado. Para ver los cambios, recarga la página.";
     miniModeTxt = "Modo Mini habilitado.";
-    miniModeTxt2 = "Modo Mini deshabilitado. Los cambios tendrán efecto cuando se recargue la página.";
+    miniModeTxt2 = "Modo Mini deshabilitado. Para ver los cambios, recarga la página.";
     highQB.innerText = "Alta";
     mediumQB.innerText = "Media";
     lowQB.innerText = "Baja";
@@ -101,6 +100,11 @@ window.changeLang = function(write, ing) {
     }
   }
 };
+
+if(Language == "ES") {
+  loadingScriptTxt = "Cargando Superhex.io Scr1pt...";
+  loadingInfoTxt = "Si el script no carga, refresca la página (F5).";
+}
 
 window.onload = function () {
   this.mkGui();
@@ -374,7 +378,7 @@ window.zoomH = function(message) {
   } else {
     Math.max = function(){return 13;}
     if(message) {
-      localStorage.setItem("zoomTBM", "True");
+      localStorage.setItem("zoomTBM", "True");      
       alert(zoomTxt);
     }
   }
@@ -395,7 +399,7 @@ window.miniM = function(msg) {
     document.getElementById("scrText2").remove();
     document.getElementById("homepage").appendChild(e);
     if(msg) {
-      localStorage.setItem("miniModeTBM", "True");
+      localStorage.setItem("miniModeTBM", "True");  
       alert(miniModeTxt);
     }
   }
@@ -407,8 +411,14 @@ scrText1.setAttribute("style", "color: white; position: fixed; top: 80px; left: 
 scrText1.innerText = loadingScriptTxt;
 document.getElementById("homepage").appendChild(scrText1);
 
+var scrTextInfo = document.createElement("h4");
+scrTextInfo.setAttribute("style", "color: white; position: fixed; top: 130px; left: 30px;");
+scrTextInfo.innerText = loadingInfoTxt;
+document.getElementById("homepage").appendChild(scrTextInfo);
+
 window.mkGui = function() {
 
+scrTextInfo.remove();
 scrText1.innerText = "Superhex.io Scr1pt v1.7";
 
 var btn = document.createElement("Button");
