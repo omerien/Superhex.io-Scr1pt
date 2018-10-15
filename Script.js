@@ -234,7 +234,7 @@ window.removeAds = function(checkBox) {
       cmdzone.innerHTML = adBlockedTxt;
       cmdzone.setAttribute("data-google-query-id", "null");
       cmdzone.setAttribute("style", "background-color: white;");
-    },1350);
+    }, 400);
   }
 };
 
