@@ -213,10 +213,12 @@ window.removeAds = function(checkBox) {
       if(!adsDeleted) {
         var Ad14 = document.getElementById("div-gpt-ad-1490263292583-0");
         Ad14.innerHTML = adBlockedTxt;
-        Ad14.setAttribute("id", "adBlockedTBM");
-        Ad14 = document.getElementById("adBlockedTBM");
         Ad14.setAttribute("data-google-query-id", "null");
-        document.getElementById("cdm-zone-01").innerHTML = adBlockedTxt;
+        Ad14.setAttribute("style", "vertical-align: bottom; margin: 0 auto; text-align: center; background-color: white;");
+        var cmdzone = document.getElementById("cdm-zone-01");
+        cmdzone.innerHTML = adBlockedTxt;
+        cmdzone.setAttribute("data-google-query-id", "null");
+        cmdzone.setAttribute("style", "background-color: white;");
       }
       alert(adsRemovedTxt);
     }
@@ -226,10 +228,12 @@ window.removeAds = function(checkBox) {
     setTimeout(function(){
       var Ad14 = document.getElementById("div-gpt-ad-1490263292583-0");
       Ad14.innerHTML = adBlockedTxt;
-      Ad14.setAttribute("id", "adBlockedTBM");
-      Ad14 = document.getElementById("adBlockedTBM");
       Ad14.setAttribute("data-google-query-id", "null");
-      document.getElementById("cdm-zone-01").innerHTML = adBlockedTxt;
+      Ad14.setAttribute("style", "vertical-align: bottom; margin: 0 auto; text-align: center; background-color: white;");
+      var cmdzone = document.getElementById("cdm-zone-01");
+      cmdzone.innerHTML = adBlockedTxt;
+      cmdzone.setAttribute("data-google-query-id", "null");
+      cmdzone.setAttribute("style", "background-color: white;");
     },1350);
   }
 };
@@ -378,7 +382,7 @@ window.zoomH = function(message) {
   } else {
     Math.max = function(){return 13;}
     if(message) {
-      localStorage.setItem("zoomTBM", "True");      
+      localStorage.setItem("zoomTBM", "True");
       alert(zoomTxt);
     }
   }
@@ -399,7 +403,7 @@ window.miniM = function(msg) {
     document.getElementById("scrText2").remove();
     document.getElementById("homepage").appendChild(e);
     if(msg) {
-      localStorage.setItem("miniModeTBM", "True");  
+      localStorage.setItem("miniModeTBM", "True");
       alert(miniModeTxt);
     }
   }
