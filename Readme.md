@@ -32,16 +32,14 @@ _______________________________________________
 # 🔰 Next version development
 
 ## 🔧 Working on/Doing:
-* Improve UI.
+Nothing
 
 ## 📝 To do list:
-* Add style to checkboxes.
 * Add dark theme.
 * Maybe add another theme?
 
 ## ✅ Done:
-* Add mini mode.
-* Improve buttons.
+Nothing
 
 ## ❌ Discarded:
-* Zoom hack control with mouse wheel/keys. (I tried this, but there was no success)
+* Add style to checkboxes. (Discarded for now, maybe i will do this in a future version)
