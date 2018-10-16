@@ -33,7 +33,7 @@
 _______________________________________________
 
 # 🔰 Next version development
-Last update: 15/10/2018
+Last update: 16/10/2018
 
 ## 🔧 Working on/Doing:
 * Zoom hack settings to change it zoom value.
