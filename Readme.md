@@ -36,7 +36,7 @@ _______________________________________________
 Last update: 15/10/2018
 
 ## 🔧 Working on/Doing:
-Nothing.
+* Zoom hack settings to change it zoom value.
 
 ## 📝 To do list:
 * Add dark theme.
