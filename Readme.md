@@ -1,26 +1,26 @@
 # Superhex.io Scr1pt
 <b>🔰 This script has the following features:</b>
 * Zoom Hack.
-* Game Quality control. (You can change the quality of the game to any value)
+* Game Quality control (you can change the quality of the game to any value).
+* Ads control (can be activated or deactivated).
+* Skins unlocker: Unlock all the skins.
 * Function to set the skin with an ID.
-* Play button text changer.
-* Ads control. (They can be activated or deactivated).
-* Skins unlocker: Unlock the skins that they give you if you subscribe, you give a like, etc.
 * Function that hides/shows the UI when pressing 0 (zero).
 * Function that hides/shows the Leaderboard when pressing 1 (one).
 * Function that shows/hides FPS and other data when pressing 2 (two).
+* Play button text changer.
 * Available in English and Spanish.
 
 <b>🔰 Este script tiene las siguientes características:</b>
 * Hack de Zoom.
-* Control de calidad del juego. (Se puede cambiar la calidad del juego a cualquier valor)
+* Control de calidad del juego (puedes cambiar la calidad del juego a cualquier valor).
+* Control de anuncios (pueden activarse o desactivarse).
+* Desbloqueador de skins: Desbloquea todas las skins.
 * Función para establecer el skin con un ID.
-* Cambiador del texto del botón Play (Jugar).
-* Control de anuncios. (Pueden activarse o desactivarse)
-* Desbloqueador de skins: Desbloquea las skins que te dan si te suscribes, das me gusta, etc.
 * Función que oculta/muestra la UI cuando se presiona 0 (cero).
 * Función que oculta/muestra la Tabla de clasificación cuando se presiona 1 (uno).
 * Función que muestra/oculta los FPS y otros datos cuando se presiona 2 (dos).
+* Cambiador del texto del botón Play (Jugar).
 * Disponible en Inglés y Español.
 
 ## ✳️  View on [GreasyFork](https://greasyfork.org/es/scripts/36071-superhex-io-scr1pt)
@@ -30,16 +30,17 @@
 _______________________________________________
 
 # 🔰 Next version development
+Last update: 15/10/2018
 
 ## 🔧 Working on/Doing:
-Nothing
+Nothing.
 
 ## 📝 To do list:
 * Add dark theme.
 * Maybe add another theme?
 
 ## ✅ Done:
-Nothing
+Nothing.
 
 ## ❌ Discarded:
 * Add style to checkboxes. (Discarded for now, maybe i will do this in a future version)
