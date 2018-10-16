@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Superhex.io Scr1pt
 // @namespace    Superhex.io Scr1pt
-// @version      1.7.0
+// @version      1.8.0
 // @license      GPL-3.0
 // @homepageURL  https://github.com/Truebamateo/Superhex.io-Scr1pt
 // @contributionURL https://www.paypal.me/tbm13
@@ -385,7 +385,7 @@ window.zoomH = function(message) {
   } else {
     Math.max = function(){return 13;}
     if(message) {
-      localStorage.setItem("zoomTBM", "True");      
+      localStorage.setItem("zoomTBM", "True");
       alert(zoomTxt);
     }
   }
@@ -406,7 +406,7 @@ window.miniM = function(msg) {
     document.getElementById("scrText2").remove();
     document.getElementById("homepage").appendChild(e);
     if(msg) {
-      localStorage.setItem("miniModeTBM", "True");  
+      localStorage.setItem("miniModeTBM", "True");
       alert(miniModeTxt);
     }
   }
@@ -426,7 +426,7 @@ document.getElementById("homepage").appendChild(scrTextInfo);
 window.mkGui = function() {
 
 scrTextInfo.remove();
-scrText1.innerText = "Superhex.io Scr1pt v1.7";
+scrText1.innerText = "Superhex.io Scr1pt v1.8";
 
 var btn = document.createElement("Button");
 btn.setAttribute("style", "position: fixed; top: 140px; left: 30px; height:25px; width:140px;");
