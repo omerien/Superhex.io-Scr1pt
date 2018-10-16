@@ -10,6 +10,7 @@
 // @description:es-ES Mod para Superhex.io
 // @author       TBM13
 // @match        http://superhex.io/*
+// @match        www.superhex.io/*
 // @grant        none
 
 // ==/UserScript==
@@ -215,10 +216,11 @@ window.removeAds = function(checkBox) {
         Ad14.innerHTML = adBlockedTxt;
         Ad14.setAttribute("data-google-query-id", "null");
         Ad14.setAttribute("style", "vertical-align: bottom; margin: 0 auto; text-align: center; background-color: white;");
-        var cmdzone = document.getElementById("cdm-zone-01");
-        cmdzone.innerHTML = adBlockedTxt;
-        cmdzone.setAttribute("data-google-query-id", "null");
-        cmdzone.setAttribute("style", "background-color: white;");
+        document.getElementById("div-gpt-ad-1490263292583-0").setAttribute("id", "rAd");
+        document.getElementById("cdm-zone-01").setAttribute("data-google-query-id", "null");
+        document.getElementById("cdm-zone-01").setAttribute("id", "rAd2");
+        document.getElementById("google_ads_iframe_/58309977/superhex_0").setAttribute("width", "0");
+        document.getElementById("google_ads_iframe_/58309977/superhex_0").setAttribute("height", "0");
       }
       alert(adsRemovedTxt);
     }
@@ -230,10 +232,11 @@ window.removeAds = function(checkBox) {
       Ad14.innerHTML = adBlockedTxt;
       Ad14.setAttribute("data-google-query-id", "null");
       Ad14.setAttribute("style", "vertical-align: bottom; margin: 0 auto; text-align: center; background-color: white;");
-      var cmdzone = document.getElementById("cdm-zone-01");
-      cmdzone.innerHTML = adBlockedTxt;
-      cmdzone.setAttribute("data-google-query-id", "null");
-      cmdzone.setAttribute("style", "background-color: white;");
+      document.getElementById("div-gpt-ad-1490263292583-0").setAttribute("id", "rAd");
+      document.getElementById("cdm-zone-01").setAttribute("data-google-query-id", "null");
+      document.getElementById("cdm-zone-01").setAttribute("id", "rAd2");
+      document.getElementById("google_ads_iframe_/58309977/superhex_0").setAttribute("width", "0");
+        document.getElementById("google_ads_iframe_/58309977/superhex_0").setAttribute("height", "0");
     }, 400);
   }
 };
@@ -382,7 +385,7 @@ window.zoomH = function(message) {
   } else {
     Math.max = function(){return 13;}
     if(message) {
-      localStorage.setItem("zoomTBM", "True");
+      localStorage.setItem("zoomTBM", "True");      
       alert(zoomTxt);
     }
   }
@@ -403,7 +406,7 @@ window.miniM = function(msg) {
     document.getElementById("scrText2").remove();
     document.getElementById("homepage").appendChild(e);
     if(msg) {
-      localStorage.setItem("miniModeTBM", "True");
+      localStorage.setItem("miniModeTBM", "True");  
       alert(miniModeTxt);
     }
   }
