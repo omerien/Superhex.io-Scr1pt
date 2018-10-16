@@ -1,4 +1,7 @@
 # Superhex.io Scr1pt
+
+# ❕ License will change to MIT License in a few days!
+
 <b>🔰 This script has the following features:</b>
 * Zoom Hack.
 * Game Quality control (you can change the quality of the game to any value).
