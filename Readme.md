@@ -1,6 +1,6 @@
 # Superhex.io Scr1pt
 
-# ❕ License will change to MIT License in a few days. This will affect 1.7.0 and higher versions of the script.
+# ❕ License changed to MIT License.
 
 <b>🔰 This script has the following features:</b>
 * Zoom Hack.
@@ -44,7 +44,7 @@ Last update: 16/10/2018
 * Maybe add another theme?
 
 ## ✅ Done:
-Nothing.
+* Change license to MIT License.
 
 ## ❌ Discarded:
 * Add style to checkboxes. (Discarded for now, maybe i will do this in a future version)
