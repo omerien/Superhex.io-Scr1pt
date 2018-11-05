@@ -33,18 +33,17 @@
 _______________________________________________
 
 # 🔰 Next version development
-Last update: 16/10/2018
+Last update: 04/11/2018
 
 ## 🔧 Working on/Doing:
-* Zoom hack settings to change it zoom value.
+* Nothing.
 
 ## 📝 To do list:
-* Change license to MIT License.
 * Add dark theme.
 * Maybe add another theme?
 
 ## ✅ Done:
-* Change license to MIT License.
+* Zoom hack settings to change it zoom value.
 
 ## ❌ Discarded:
 * Add style to checkboxes. (Discarded for now, maybe i will do this in a future version)
