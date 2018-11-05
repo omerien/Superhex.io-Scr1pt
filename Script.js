@@ -39,7 +39,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-var Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), miniMode = localStorage.getItem("miniModeTBM"), zoomValue = localStorage.getItem("zoomValTBM");
+var Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), zoomValue = localStorage.getItem("zoomValTBM");
 var style = document.createElement("style");
 style.type = "text/css";
 style.innerHTML = 'button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white;  background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.3s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #4a934a; color: #cccccc; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #387038;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;} button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';
@@ -57,7 +57,6 @@ sAlreadyTxt = "You are already using the skin ",
 keyActionsTxt = "Keys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Show/hide FPS and other data.",
 partyTxt = "Party ID:", party5Txt = "The ID of the Party can't be less than 5.", party6Txt = "The ID of the Party can't be greater than 6.",
 zoomTxt = "Zoom hack enabled.", zoomTxt2 = "Zoom hack disabled. To see the changes, reload the page.", zoomValueTxt = "Insert zoom hack value.\nDefault is 13.", zoomValueH = "Value can't be higher than 100.", zoomValueL = "Value can't be less than 3.", zoomValueInvalid = "Invalid value. You can only use numbers.",
-miniModeTxt = "Mini Mode enabled.", miniModeTxt2 = "Mini mode disabled. To see the changes, reload the page.",
 highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, zoomV;
 
 window.changeLang = function(write, ing) {
@@ -104,7 +103,6 @@ window.changeLang = function(write, ing) {
 		document.getElementById("btn5").innerText = "Texto del botón Play";
     document.getElementById("check1Text").innerText = "Remover anuncios";
     document.getElementById("check2Text").innerText = "Hack de Zoom";
-    document.getElementById("check3Text").innerText = "Modo Mini";
 		document.getElementById("btn6").innerText = "Desbloquear skins";
 		document.getElementById("btn7").innerText = "English (Inglés)";
 		document.getElementById("btn7").setAttribute("onclick", "changeLang(false, true);");
@@ -116,8 +114,6 @@ window.changeLang = function(write, ing) {
     zoomValueH = "El valor no puede ser mayor a 100.";
     zoomValueL = "El valor no puede ser menor a 3.";
     zoomValueInvalid = "Valor inválido. Solo puedes usar números.";
-    miniModeTxt = "Modo Mini habilitado.";
-    miniModeTxt2 = "Modo Mini deshabilitado. Para ver los cambios, recarga la página.";
     highQB.innerText = "Alta";
     mediumQB.innerText = "Media";
     lowQB.innerText = "Baja";
@@ -149,7 +145,6 @@ window.onload = function () {
   lowQB = document.getElementById("button-quality-low");
   if(Language == "ES") this.changeLang(false, false);
   if(AdsTBM) this.removeAds(false);
-  if(miniMode == "True") this.miniM(false);
   if(Text1TBM) document.getElementById("button-play-text").innerText = Text1TBM;
   if(currQuality == null) this.changeQuality(0.75); else this.changeQuality(currQuality);
   if(zoomValue) zoomV = Number(zoomValue); else zoomV = 13;
@@ -432,27 +427,6 @@ window.setZoomH = function() {
   }
 };
 
-window.miniM = function(msg) {
-  if(miniMode == "True" && msg) {
-    localStorage.removeItem("miniModeTBM");
-    alert(miniModeTxt2);
-  } else {
-    document.getElementsByTagName("div").item(38).remove();
-    document.getElementsByTagName("td").item(1).remove();
-    var e = document.createElement("h5");
-    e.setAttribute("style", "color: white; position: fixed; top: 50px; right: 10px;");
-    e.setAttribute("id", "scrText2");
-    e.innerText = keyActionsTxt;
-    document.getElementById("scrText2").remove();
-    document.getElementById("homepage").appendChild(e);
-    if(msg) {
-      localStorage.setItem("miniModeTBM", "True");
-      alert(miniModeTxt);
-    }
-  }
-  miniMode = localStorage.getItem("miniModeTBM");
-};
-
 var scrText1 = document.createElement("h2");
 scrText1.setAttribute("style", "color: white; position: fixed; top: 80px; left: 30px;");
 scrText1.innerText = loadingScriptTxt;
@@ -583,19 +557,4 @@ btnZHS.setAttribute("type", "button");
 btnZHS.setAttribute("id", "btnZHS");
 btnZHS.setAttribute("onclick", "setZoomH();");
 document.getElementById("homepage").appendChild(btnZHS);
-
-var Check3 = document.createElement("INPUT");
-Check3.setAttribute("type", "checkbox");
-Check3.setAttribute("id", "checkMiniMode");
-Check3.setAttribute("style", "position: fixed; top: 433px; left: 30px;");
-Check3.setAttribute("onclick", "miniM(true);");
-document.getElementById("homepage").appendChild(Check3);
-
-if(miniMode == "True") Check3.checked = true;
-
-var check3Text = document.createElement("h5");
-check3Text.setAttribute("style", "color: white; position: fixed; top: 413px; left: 50px;");
-check3Text.setAttribute("id", "check3Text");
-check3Text.innerText = "Mini Mode";
-document.getElementById("homepage").appendChild(check3Text);
 };
