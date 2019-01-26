@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Superhex.io Scr1pt - Zoom Hack and more
 // @namespace    Superhex.io Scr1pt
-// @version      1.8.0.1
+// @version      1.8.1
 // @license      MIT
 // @homepageURL  https://github.com/TBM13/Superhex.io-Scr1pt
 // @contributionURL https://www.paypal.me/tbm13
@@ -18,7 +18,7 @@
 /*
 MIT License
 
-Copyright (c) 2018 TBM13
+Copyright (c) 2018 TBM13 (TBM_13 or TBM 13)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -47,22 +47,22 @@ document.getElementsByTagName("head")[0].appendChild(style);
 var adsDeleted = false,
 skinPag = 1,
 superhex = window.superhex,
-adsRestoredTxt = "Ads restored. To see the changes, reload the page.", adBlockedTxt = "Ad blocked by Superhex.io Scr1pt", adsRemovedTxt = "Ads removed.",
-qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Set the quality higher than 2.7 may cause problems.", q01Txt = "WARNING: Set the quality lower than 0.1 may cause problems.", qInvalidTxt = "Invalid value. You can only use numbers.\nExample: 1.2", qNotChangedTxt = "Quality not changed.", qChangedTxt = "Quality changed to: ",
-sChangeTxt = "Skin ID:\nNote: To set the Skin 0 use 0.1", sInvalidTxt = "Invalid ID. You can only use numbers.", s0Txt = "Skin changed to: 0", sNotChangedTxt = "Skin not changed.", sChangedTxt = "Skin changed to: ", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin ", sNoExist = " doesn't exist. Enter a number less than 10.",
+adsRestoredTxt = "Ads restored. To see the changes, reload the website.", adBlockedTxt = "Ad blocked by Superhex.io Scr1pt", adsRemovedTxt = "Ads removed.",
+qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Quality value higher than 2.7 can cause problems.", q01Txt = "WARNING: Quality value lower than 0.1 can cause problems.", qInvalidTxt = "Invalid value. Make sure to only use numbers.\nExample: 1.2", qNotChangedTxt = "Quality not changed.", qChangedTxt = "Quality changed to: ",
+sChangeTxt = "Skin ID:\nNote: For 0 use 0.1", sInvalidTxt = "Invalid ID. Make sure to only use numbers.", s0Txt = "Skin changed to: 0", sNotChangedTxt = "Skin not changed.", sChangedTxt = "Skin changed to: ", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin ", sNoExist = " doesn't exist. Enter a number less than 10.",
 pTextTxt = "Play button text:", pTextNotChangedTxt = "Play button text not changed.", pTextChangedTxt = "Play button text changed to: ",
 sUnlockekdTxt = "You already have the skins unlocked.", sUnlockedsTxt = "The following skins were unlocked:", sChickenTxt = "Yellow chicken.", sBirdTxt = "Light blue bird.", sCowTxt = "Cow.", sBird2Txt = "Red bird.", sElephantTxt = "Elephant.",
-loadingScriptTxt = "Loading Superhex.io Scr1pt...", loadingInfoTxt = "If the script doesn't load, refresh the page (F5).",
+loadingScriptTxt = "Loading Superhex.io Scr1pt...", loadingInfoTxt = "If the script doesn't load, refresh the website (F5).",
 sAlreadyTxt = "You are already using the skin ",
-keyActionsTxt = "Keys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Show/hide FPS and other data.",
+keyActionsTxt = "Keys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Show/hide FPS and other info.",
 partyTxt = "Party ID:", party5Txt = "The ID of the Party can't be less than 5.", party6Txt = "The ID of the Party can't be greater than 6.",
-zoomTxt = "Zoom hack enabled.", zoomTxt2 = "Zoom hack disabled. To see the changes, reload the page.", zoomValueTxt = "Insert zoom hack value.\nDefault is 13.", zoomValueH = "Value can't be higher than 100.", zoomValueL = "Value can't be less than 3.", zoomValueInvalid = "Invalid value. You can only use numbers.",
+zoomTxt = "Zoom hack enabled.", zoomTxt2 = "Zoom hack disabled. To see the changes, reload the website.", zoomValueTxt = "Insert zoom value.\nBy default it's 13.", zoomValueH = "Value can't be higher than 100.", zoomValueL = "Value can't be less than 3.", zoomValueInvalid = "Invalid value. Make sure to only use numbers.",
 highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, zoomV;
 
 window.changeLang = function(write, ing) {
   if(ing) {
     localStorage.setItem('LangTBM', 'EN');
-    alert("Language changed to English. To see the changes, reload the page.");
+    alert("Language changed to English. To see the changes, reload the website.");
 		document.getElementById("btn7").innerText = "Español (Spanish)";
 		document.getElementById("btn7").setAttribute("onclick", "changeLang(true, false);");
   } else {
@@ -440,7 +440,7 @@ document.getElementById("homepage").appendChild(scrTextInfo);
 window.mkGui = function() {
 
 scrTextInfo.remove();
-scrText1.innerText = "Superhex.io Scr1pt v1.8";
+scrText1.innerText = "Superhex.io Scr1pt v1.8.1";
 
 var btn = document.createElement("Button");
 btn.setAttribute("style", "position: fixed; top: 140px; left: 30px; height:25px; width:140px;");
