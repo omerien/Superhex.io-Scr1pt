@@ -30,17 +30,17 @@
 
 _______________________________________________
 
-# 🔰 Next version development
+## 🔰 Next version development
 Last update: 25/01/2019
 
-## 🔧 Working on/Doing:
+### 🔧 Working on/Doing:
 * Nothing.
 
-## 📝 To do list:
+### 📝 To do list:
 * Add dark theme (idea, not promised)
 
-## ✅ Done:
+### ✅ Done:
 * Nothing
 
-## ❌ Discarded:
+### ❌ Discarded:
 * Add style to checkboxes. (Discarded for now, maybe i will do this in a future version)
