@@ -14,18 +14,6 @@
 * Play button text changer.
 * Available in English and Spanish.
 
-<b>🔰 Este script tiene las siguientes características:</b>
-* Hack de Zoom.
-* Control de calidad del juego (puedes cambiar la calidad del juego a cualquier valor).
-* Control de anuncios (pueden activarse o desactivarse).
-* Desbloqueador de skins: Desbloquea todas las skins.
-* Función para establecer el skin con un ID.
-* Función que oculta/muestra la UI cuando se presiona 0 (cero).
-* Función que oculta/muestra la Tabla de clasificación cuando se presiona 1 (uno).
-* Función que muestra/oculta los FPS y otros datos cuando se presiona 2 (dos).
-* Cambiador del texto del botón Play (Jugar).
-* Disponible en Inglés y Español.
-
 ## ✳️  View on [GreasyFork](https://greasyfork.org/es/scripts/36071-superhex-io-scr1pt)
 
 ## ✳️  [Donate/Donar](https://www.paypal.me/TBM13)
