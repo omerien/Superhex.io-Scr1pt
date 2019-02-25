@@ -1,5 +1,7 @@
 # Superhex.io Scr1pt
 
+**This script is no longer under active development. If you want to contribute with new features, bug fixes or whatever, I invite you to make a pull request.**
+
 <b>🔰 This script has the following features:</b>
 * Zoom Hack.
 * Game Quality control (you can change the quality of the game to any value).
@@ -27,20 +29,3 @@
 ## ✳️  View on [GreasyFork](https://greasyfork.org/es/scripts/36071-superhex-io-scr1pt)
 
 ## ✳️  [Donate/Donar](https://www.paypal.me/TBM13)
-
-_______________________________________________
-
-## 🔰 Next version development
-Last update: 25/01/2019
-
-### 🔧 Working on/Doing:
-* Nothing.
-
-### 📝 To do list:
-* Add dark theme (idea, not promised)
-
-### ✅ Done:
-* Nothing
-
-### ❌ Discarded:
-* Add style to checkboxes. (Discarded for now, maybe i will do this in a future version)
