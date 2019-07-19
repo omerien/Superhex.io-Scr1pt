@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Superhex.io Scr1pt - Zoom Hack and more
 // @namespace    Superhex.io Scr1pt
-// @version      1.8.2
+// @version      1.8.3
 // @license      MIT
 // @homepageURL  https://github.com/TBM13/Superhex.io-Scr1pt
 // @contributionURL https://www.paypal.me/tbm13
@@ -218,15 +218,11 @@ window.removeAds = function (checkBox) {
 window.rAds = function () {
     superhex.clickPlay = superhex.aipComplete;
     superhex.clickPlayAgain = superhex.aipComplete;
-    var Ad14 = document.getElementById("div-gpt-ad-1490263292583-0");
-    Ad14.innerHTML = adBlockedTxt;
-    Ad14.setAttribute("data-google-query-id", "null");
-    Ad14.setAttribute("style", "vertical-align: bottom; margin: 0 auto; text-align: center; background-color: white;");
-    document.getElementById("div-gpt-ad-1490263292583-0").setAttribute("id", "rAd");
-    document.getElementById("cdm-zone-01").setAttribute("data-google-query-id", "null");
-    document.getElementById("cdm-zone-01").setAttribute("id", "rAd2");
-    document.getElementById("google_ads_iframe_/58309977/superhex_0").setAttribute("width", "0");
-    document.getElementById("google_ads_iframe_/58309977/superhex_0").setAttribute("height", "0");
+    var Ad = document.getElementById("TKS_superhex-io_300x250");
+    Ad.innerHTML = adBlockedTxt;
+    Ad.setAttribute("id", "blockedAd1");
+    Ad.setAttribute("data-google-query-id", "null");
+    Ad.setAttribute("style", "vertical-align: bottom; margin: 0 auto; text-align: center; background-color: white;");
 };
 
 document.onkeyup = function (e) {
@@ -394,7 +390,7 @@ document.getElementById("homepage").appendChild(scrTextInfo);
 window.mkGui = function () {
 
     scrTextInfo.remove();
-    scrText1.innerText = "Superhex.io Scr1pt v1.8.2";
+    scrText1.innerText = "Superhex.io Scr1pt v1.8.3";
 
     var btn = document.createElement("Button");
     btn.setAttribute("style", "position: fixed; top: 140px; left: 30px; height:25px; width:140px;");
