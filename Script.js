@@ -51,7 +51,7 @@ var adsDeleted = false,
     qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Quality value higher than 2.7 can cause problems.", q01Txt = "WARNING: Quality value lower than 0.1 can cause problems.", qInvalidTxt = "Invalid value. Make sure to only use numbers.\nExample: 1.2", qChangedTxt = "Quality changed to: ",
     sChangeTxt = "Skin ID:\nNote: For 0 use 0.1", sInvalidTxt = "Invalid ID. Make sure to only use numbers.", s0Txt = "Skin changed to: 0", sNotChangedTxt = "Skin not changed.", sChangedTxt = "Skin changed to: ", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin ", sNoExist = " doesn't exist. Enter a number less than 10.",
     pTextTxt = "Play button text:", pTextNotChangedTxt = "Play button text not changed.", pTextChangedTxt = "Play button text changed to: ",
-    sUnlockekdTxt = "You already have the skins unlocked.", sUnlockedsTxt = "The following skins were unlocked:", sChickenTxt = "Yellow chicken.", sBirdTxt = "Light blue bird.", sCowTxt = "Cow.", sBird2Txt = "Red bird.", sElephantTxt = "Elephant.",
+    sUnlockekdTxt = "You already have the skins unlocked.", sUnlockedsTxt = "The following skins were unlocked:", sChickenTxt = "Yellow chicken", sBirdTxt = "Light blue bird", sCowTxt = "Cow", sBird2Txt = "Red bird", sElephantTxt = "Elephant",
     loadingScriptTxt = "Loading Superhex.io Scr1pt...", loadingInfoTxt = "If the script doesn't load, refresh the website (F5).",
     sAlreadyTxt = "You are already using the skin ",
     keyActionsTxt = "Keys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Show/hide FPS and other info.",
@@ -86,11 +86,11 @@ window.changeLang = function (write, ing) {
         pTextChangedTxt = "Texto del botón Play cambiado a: ";
         sUnlockekdTxt = "Ya tienes las skins desbloqueadas.";
         sUnlockedsTxt = "Las siguientes skins fueron desbloqueadas:";
-        sChickenTxt = "Pollo amarillo.";
-        sBirdTxt = "Ave celeste.";
-        sCowTxt = "Vaca.";
-        sBird2Txt = "Ave roja.";
-        sElephantTxt = "Elefante.";
+        sChickenTxt = "Pollo amarillo";
+        sBirdTxt = "Ave celeste";
+        sCowTxt = "Vaca";
+        sBird2Txt = "Ave roja";
+        sElephantTxt = "Elefante";
         sAlreadyTxt = "Ya estás usando la skin ";
         partyTxt = "ID de la Party:";
         party5Txt = "El ID de la Party no puede ser menor a 5.";
@@ -142,44 +142,30 @@ window.onload = function () {
     if (Language == "ES") window.changeLang(false, false);
     if (AdsTBM) window.removeAds(false);
     if (Text1TBM) document.getElementById("button-play-text").innerText = Text1TBM;
-    if (currQuality == null) window.changeQuality(0.75); else window.changeQuality(currQuality);
-    if (zoomValue) zoomV = Number(zoomValue); else zoomV = 13;
+    window.changeQuality(currQuality == null ? 0.75 : currQuality);
+    zoomV = zoomValue ? Number(zoomValue) : zoomV = 13;
     if (zoomHack == "True") window.zoomH(false);
     if (playBtn.className == "green") playBtn.setAttribute("class", "scr1ptGreen");
     if (playAgBtn.className == "playagain green") playAgBtn.setAttribute("class", "playagain scr1ptGreen");
     if (mMenuBtn.className == "mainmenu grey") mMenuBtn.setAttribute("class", "mainmenu scr1ptGrey");
     highQB.setAttribute("onclick", "changeQuality(1);");
-    if (highQB.className == "green") highQB.setAttribute("class", "scr1ptGreen"); else highQB.setAttribute("class", "scr1ptGreen unselected");
+    highQB.setAttribute("class", highQB.className == "green" ? "scr1ptGreen" : "scr1ptGreen unselected");
     mediumQB.setAttribute("onclick", "changeQuality(0.75);");
-    if (mediumQB.className == "green") mediumQB.setAttribute("class", "scr1ptGreen"); else mediumQB.setAttribute("class", "scr1ptGreen unselected");
+    mediumQB.setAttribute("class", mediumQB.className == "green" ? "scr1ptGreen" : "scr1ptGreen unselected");
     lowQB.setAttribute("onclick", "changeQuality(0.5);");
-    if (lowQB.className == "green") lowQB.setAttribute("class", "scr1ptGreen"); else lowQB.setAttribute("class", "scr1ptGreen unselected");
+    lowQB.setAttribute("class", lowQB.className == "green" ? "scr1ptGreen" : "scr1ptGreen unselected");
 };
 
 window.skinChangePage = function (next, cantidad) {
     if (!next) {
-        if (cantidad == 1) {
-            superhex.previousSkins();
-        } else if (cantidad == 2) {
-            superhex.previousSkins();
-            superhex.previousSkins();
-        } else if (cantidad == 3) {
-            superhex.previousSkins();
-            superhex.previousSkins();
-            superhex.previousSkins();
-        }
+        if (cantidad >= 1) superhex.previousSkins();
+        if (cantidad >= 2) superhex.previousSkins();
+        if (cantidad >= 3) superhex.previousSkins();
         skinPag -= cantidad;
     } else {
-        if (cantidad == 1) {
-            superhex.nextSkins();
-        } else if (cantidad == 2) {
-            superhex.nextSkins();
-            superhex.nextSkins();
-        } else if (cantidad == 3) {
-            superhex.nextSkins();
-            superhex.nextSkins();
-            superhex.nextSkins();
-        }
+        if (cantidad >= 1) superhex.nextSkins();
+        if (cantidad >= 2) superhex.nextSkins();
+        if (cantidad >= 3) superhex.nextSkins();
         skinPag += cantidad;
     }
 };
@@ -209,10 +195,10 @@ window.changeSkin = function (ID) {
 window.changeQuality = function (qualityValue) {
     superhex.setQuality(qualityValue);
     currQuality = localStorage.getItem("quality");
-    if (Language == "ES") btn2.innerText = "Calidad personalizada"; else btn2.innerText = "Custom Quality";
+    btn2.innerText = Language == "ES" ? "Calidad personalizada" : "Custom Quality";
     if (currQuality != 1 && currQuality != 0.75 && currQuality != 0.5) {
         btn2.setAttribute("class", "scr1ptGreen");
-        btn2.innerText = btn2.innerText + " (" + currQuality.toString() + ")";
+        btn2.innerText += " (" + currQuality.toString() + ")";
     } else btn2.setAttribute("class", "scr1ptGreen unselected");
 };
 
@@ -247,7 +233,10 @@ document.onkeyup = function (e) {
     try {
         e = e || window.event;
         var key = e.which || e.keyCode;
-        if (key === 49 && document.getElementById("leaderboard").getAttribute("style") != null || key === 97 && document.getElementById("leaderboard").getAttribute("style") != null) if (document.getElementById("leaderboard").getAttribute("style") == "display: block;") document.getElementById("leaderboard").setAttribute("style", "display: none;"); else document.getElementById("leaderboard").setAttribute("style", "display: block;");
+        if (key === 49 && document.getElementById("leaderboard").getAttribute("style") != null || key === 97 && document.getElementById("leaderboard").getAttribute("style") != null)
+        {
+            document.getElementById("leaderboard").setAttribute("style", "display: " + (document.getElementById("leaderboard").getAttribute("style") == "display: block;" ? "none;" : "block;"));
+        }
         if (key === 48 && document.getElementById("leaderboard").getAttribute("style") != null || key === 96 && document.getElementById("leaderboard").getAttribute("style") != null) {
             if (document.getElementById("leaderboard").getAttribute("style") == "display: block;") document.getElementById("leaderboard").setAttribute("style", "display: none;");
             if (document.getElementById("minimap").getAttribute("style") == "display: block;") document.getElementById("minimap").setAttribute("style", "display: none;");
@@ -256,10 +245,10 @@ document.onkeyup = function (e) {
                 document.getElementById("score").setAttribute("style", "display: block;");
                 document.getElementById("minimap").setAttribute("style", "display: block;");
                 document.getElementById("leaderboard").setAttribute("style", "display: block;");
-                if (window.location.hash != "") document.getElementById("friendsScores").setAttribute("style", "display: block;");
+                if (window.location.hash.length > 5 && window.location.hash.length < 8) document.getElementById("friendsScores").setAttribute("style", "display: block;");
             }
         }
-        if (key === 50 || key === 98) if (document.getElementById("fps").getAttribute("style") == "display: block; color: white;") document.getElementById("fps").setAttribute("style", "display: none;"); else document.getElementById("fps").setAttribute("style", "display: block; color: white;");
+        if (key === 50 || key === 98) document.getElementById("fps").setAttribute("style", "display: " + (document.getElementById("fps").getAttribute("style") == "display: block; color: white;" ? "none;" : "block; color: white;"));
     } catch (err) {
         console.error("Superhex.io Scr1pt onKeyUp Error: " + err);
     }
@@ -348,12 +337,13 @@ window.unlockSK = function () {
         localStorage.setItem("followClicked", 1);
         superhex.nextSkins();
         superhex.previousSkins();
-        alert(sUnlockedsTxt);
-        if (ChickenS) alert(sChickenTxt);
-        if (TweetS) alert(sBirdTxt);
-        if (CowS) alert(sCowTxt);
-        if (RedBirdS) alert(sBird2Txt);
-        if (ElephantS) alert(sElephantTxt);
+        var msg = sUnlockedsTxt;
+        if (ChickenS) msg += "\n" + sChickenTxt;
+        if (TweetS) msg += "\n" + sBirdTxt;
+        if (CowS) msg += "\n" + sCowTxt;
+        if (RedBirdS) msg += "\n" + sBird2Txt;
+        if (ElephantS) msg += "\n" + sElephantTxt;
+        alert(msg);
     }
 };
 
@@ -457,7 +447,7 @@ window.mkGui = function () {
     Check1.setAttribute("onclick", "removeAds(true);");
     document.getElementById("homepage").appendChild(Check1);
 
-    if (AdsTBM) Check1.checked = true;
+    Check1.checked = AdsTBM;
 
     var check1Text = document.createElement("h5");
     check1Text.setAttribute("style", "color: white; position: fixed; top: 363px; left: 50px;");
@@ -505,7 +495,7 @@ window.mkGui = function () {
     Check2.setAttribute("onclick", "zoomH(true);");
     document.getElementById("homepage").appendChild(Check2);
 
-    if (zoomHack == "True") Check2.checked = true;
+    Check2.checked = zoomHack == "True";
 
     var check2Text = document.createElement("h5");
     check2Text.setAttribute("style", "color: white; position: fixed; top: 388px; left: 50px;");
