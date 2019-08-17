@@ -18,7 +18,7 @@
 /*
 MIT License
 
-Copyright (c) 2018 TBM13 (TBM_13 or TBM 13)
+Copyright (c) 2019 TBM13
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
