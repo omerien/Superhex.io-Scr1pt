@@ -57,7 +57,7 @@ var style = document.createElement("style"),
 
 style.type = "text/css";
 style.innerHTML = `button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white; background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.3s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #5ed15e; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #4e9c4e;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;}
-button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';`
+button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';`;
 document.getElementsByTagName("head")[0].appendChild(style);
 
 window.changeLang = function(write, ing) {
@@ -117,7 +117,7 @@ window.changeLang = function(write, ing) {
         Language = "ES";
         if (write) {
             localStorage.setItem('LangTBM', 'ES');
-            if (btn2.getAttribute("class") == "green") document.getElementById("btn2").innerText = "Calidad personalizada (" + currQuality.toString() + ")";
+            if (document.getElementById("btn2").getAttribute("class") == "green") document.getElementById("btn2").innerText = "Calidad personalizada (" + currQuality.toString() + ")";
             alert("Idioma cambiado a Español.");
         }
     }
@@ -196,11 +196,11 @@ window.changeSkin = function (ID) {
 window.changeQuality = function (qualityValue) {
     superhex.setQuality(qualityValue);
     currQuality = localStorage.getItem("quality");
-    btn2.innerText = Language == "ES" ? "Calidad personalizada" : "Custom Quality";
+    document.getElementById("btn2").innerText = Language == "ES" ? "Calidad personalizada" : "Custom Quality";
     if (currQuality != 1 && currQuality != 0.75 && currQuality != 0.5) {
-        btn2.setAttribute("class", "scr1ptGreen");
-        btn2.innerText += " (" + currQuality.toString() + ")";
-    } else btn2.setAttribute("class", "scr1ptGreen unselected");
+        document.getElementById("btn2").setAttribute("class", "scr1ptGreen");
+        document.getElementById("btn2").innerText += " (" + currQuality.toString() + ")";
+    } else document.getElementById("btn2").setAttribute("class", "scr1ptGreen unselected");
 };
 
 window.removeAds = function (checkBox) {
@@ -361,7 +361,7 @@ window.zoomH = function (message) {
         localStorage.removeItem("zoomTBM");
         Math.max = math_max_o;
     } else {
-        Math.max = function () { return zoomV; }
+        Math.max = function () { return zoomV; };
         if (message) localStorage.setItem("zoomTBM", "True");
     }
     zoomHack = localStorage.getItem("zoomTBM");
