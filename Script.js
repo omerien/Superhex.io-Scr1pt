@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Superhex.io Scr1pt - Zoom Hack and more
 // @namespace    Superhex.io Scr1pt
-// @version      1.8.3
+// @version      1.8.4
 // @license      MIT
 // @homepageURL  https://github.com/TBM13/Superhex.io-Scr1pt
 // @contributionURL https://www.paypal.me/tbm13
@@ -390,7 +390,7 @@ document.getElementById("homepage").appendChild(scrTextInfo);
 window.mkGui = function () {
 
     scrTextInfo.remove();
-    scrText1.innerText = "Superhex.io Scr1pt v1.8.3";
+    scrText1.innerText = "Superhex.io Scr1pt v1.8.4";
 
     var btn = document.createElement("Button");
     btn.setAttribute("style", "position: fixed; top: 140px; left: 30px; height: 25px; width: 140px;");
