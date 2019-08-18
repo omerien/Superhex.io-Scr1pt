@@ -39,15 +39,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-var Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), zoomValue = localStorage.getItem("zoomValTBM");
-var style = document.createElement("style");
-style.type = "text/css";
-style.innerHTML = 'button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white;  background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.3s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #4a934a; color: #cccccc; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #387038;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;} button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';
-document.getElementsByTagName("head")[0].appendChild(style);
-var adsDeleted = false,
+var style = document.createElement("style"),
+    Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), zoomValue = localStorage.getItem("zoomValTBM"),
     skinPag = 1,
     superhex = window.superhex,
-    adsRestoredTxt = "Ads restored. To see the changes, reload the website.", adBlockedTxt = "Ad blocked by Superhex.io Scr1pt",
+    adsDeleted = false, adsRestoredTxt = "Ads restored. To see the changes, reload the website.", adBlockedTxt = "Ad blocked by Superhex.io Scr1pt",
     qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Quality value higher than 2.7 can cause problems.", q01Txt = "WARNING: Quality value lower than 0.1 can cause problems.", qInvalidTxt = "Invalid value. Make sure to only use numbers.\nExample: 1.2", qChangedTxt = "Quality changed to: ",
     sChangeTxt = "Skin ID:\nNote: For 0 use 0.1", sInvalidTxt = "Invalid ID. Make sure to only use numbers.", s0Txt = "Skin changed to: 0", sNotChangedTxt = "Skin not changed.", sChangedTxt = "Skin changed to: ", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin ", sNoExist = " doesn't exist. Enter a number less than 10.",
     pTextTxt = "Play button text:", pTextNotChangedTxt = "Play button text not changed.", pTextChangedTxt = "Play button text changed to: ",
@@ -59,7 +55,12 @@ var adsDeleted = false,
     zoomValueTxt = "Insert zoom value.\nBy default it's 13. (Higher value = less zoom)", zoomValueH = "Value can't be higher than 100.", zoomValueL = "Value can't be less than 3.", zoomValueInvalid = "Invalid value. Make sure to only use numbers.",
     highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, zoomV, math_max_o = Math.max;
 
-window.changeLang = function (write, ing) {
+style.type = "text/css";
+style.innerHTML = `button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white; background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.3s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #5ed15e; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #4e9c4e;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;}
+button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';`
+document.getElementsByTagName("head")[0].appendChild(style);
+
+window.changeLang = function(write, ing) {
     if (ing) {
         localStorage.setItem('LangTBM', 'EN');
         alert("Language changed to English. To see the changes, reload the website.");
@@ -393,7 +394,7 @@ window.mkGui = function () {
     scrText1.innerText = "Superhex.io Scr1pt v1.8.3";
 
     var btn = document.createElement("Button");
-    btn.setAttribute("style", "position: fixed; top: 140px; left: 30px; height:25px; width:140px;");
+    btn.setAttribute("style", "position: fixed; top: 140px; left: 30px; height: 25px; width: 140px;");
     btn.setAttribute("class", "scr1ptGreen");
     btn.setAttribute("type", "button");
     btn.setAttribute("id", "btn");
@@ -410,7 +411,7 @@ window.mkGui = function () {
     document.getElementById("button-quality-high").parentElement.appendChild(btn2);
 
     var btnGF = document.createElement("Button");
-    btnGF.setAttribute("style", "position: fixed; top: 175px; left: 30px; height:25px; width:140px;");
+    btnGF.setAttribute("style", "position: fixed; top: 175px; left: 30px; height: 25px; width: 140px;");
     btnGF.setAttribute("class", "scr1ptGreen");
     btnGF.setAttribute("type", "button");
     btnGF.setAttribute("id", "btnGF");
@@ -419,7 +420,7 @@ window.mkGui = function () {
     document.getElementById("homepage").appendChild(btnGF);
 
     var btn3 = document.createElement("Button");
-    btn3.setAttribute("style", "position: fixed; top: 210px; left: 30px; height:25px; width:140px;");
+    btn3.setAttribute("style", "position: fixed; top: 210px; left: 30px; height: 25px; width: 140px;");
     btn3.setAttribute("class", "scr1ptGreen");
     btn3.setAttribute("type", "button");
     btn3.setAttribute("id", "btn3");
@@ -428,7 +429,7 @@ window.mkGui = function () {
     document.getElementById("homepage").appendChild(btn3);
 
     var btn5 = document.createElement("Button");
-    btn5.setAttribute("style", "position: fixed; top: 245px; left: 30px; height:25px; width:140px;");
+    btn5.setAttribute("style", "position: fixed; top: 245px; left: 30px; height: 25px; width: 140px;");
     btn5.setAttribute("class", "scr1ptGreen");
     btn5.setAttribute("type", "button");
     btn5.setAttribute("id", "btn5");
@@ -452,7 +453,7 @@ window.mkGui = function () {
     document.getElementById("homepage").appendChild(check1Text);
 
     var btn6 = document.createElement("Button");
-    btn6.setAttribute("style", "position: fixed; top: 280px; left: 30px; height:25px; width:140px;");
+    btn6.setAttribute("style", "position: fixed; top: 280px; left: 30px; height: 25px; width: 140px;");
     btn6.setAttribute("class", "scr1ptGreen");
     btn6.setAttribute("type", "button");
     btn6.setAttribute("id", "btn6");
@@ -461,7 +462,7 @@ window.mkGui = function () {
     document.getElementById("homepage").appendChild(btn6);
 
     var btn8 = document.createElement("Button");
-    btn8.setAttribute("style", "position: fixed; top: 315px; left: 30px; height:25px; width:140px;");
+    btn8.setAttribute("style", "position: fixed; top: 315px; left: 30px; height: 25px; width: 140px;");
     btn8.setAttribute("class", "scr1ptGreen");
     btn8.setAttribute("type", "button");
     btn8.setAttribute("id", "btn8");
@@ -470,7 +471,7 @@ window.mkGui = function () {
     document.getElementById("homepage").appendChild(btn8);
 
     var btn7 = document.createElement("Button");
-    btn7.setAttribute("style", "position: fixed; top: 350px; left: 30px; height:25px; width:140px;");
+    btn7.setAttribute("style", "position: fixed; top: 350px; left: 30px; height: 25px; width: 140px;");
     btn7.setAttribute("class", "scr1ptGreen");
     btn7.setAttribute("type", "button");
     btn7.setAttribute("id", "btn7");
@@ -500,7 +501,7 @@ window.mkGui = function () {
     document.getElementById("homepage").appendChild(check2Text);
 
     var btnZHS = document.createElement("Button");
-    btnZHS.setAttribute("style", "position: fixed; top: 408px; left: 145px; height:16px; width:16px;");
+    btnZHS.setAttribute("style", "position: fixed; top: 408px; left: 145px; height: 16px; width: 16px;");
     btnZHS.setAttribute("class", "scr1ptGreen");
     btnZHS.innerHTML = "<img src='https://lh3.googleusercontent.com/Abm4DjvPOP55GK2MCe9gYh8M1ZJa7ws71oXcW2q6Rl1pQXIQ_bUcVxbN5vZ8_6pmP248O-uQEN2fUxq-xzFlzefdXyEBakvzEgGKzIwSkcdSBHdM2PwtgpgXbMvbP_N7FSI4BYIujg=s16-no' style='position: absolute; left: 0px; top: 0px;'/>";
     btnZHS.setAttribute("type", "button");
