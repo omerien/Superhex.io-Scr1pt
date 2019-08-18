@@ -56,8 +56,7 @@ var style = document.createElement("style"),
     highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, zoomV, math_max_o = Math.max;
 
 style.type = "text/css";
-style.innerHTML = `button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white; background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.3s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #5ed15e; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #4e9c4e;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;}
-button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';`;
+style.innerHTML = 'button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white; background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.3s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #5ed15e; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #4e9c4e;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;} button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.3s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';
 document.getElementsByTagName("head")[0].appendChild(style);
 
 window.changeLang = function(write, ing) {
