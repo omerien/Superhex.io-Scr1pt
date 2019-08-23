@@ -44,14 +44,14 @@ var style = document.createElement("style"),
     skinPag = 1,
     superhex = window.superhex,
     adsDeleted = false, adsRestoredTxt = "Ads restored. To see the changes, reload the website.", adBlockedTxt = "Ad blocked by Superhex.io Scr1pt",
-    qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Quality value higher than 2.7 can cause problems.", q01Txt = "WARNING: Quality value lower than 0.1 can cause problems.", qInvalidTxt = "Invalid value. Make sure to only use numbers.\nExample: 1.2", qChangedTxt = "Quality changed to: ",
-    sChangeTxt = "Skin ID:\nNote: For 0 use 0.1", sInvalidTxt = "Invalid ID. Make sure to only use numbers.", s0Txt = "Skin changed to: 0", sNotChangedTxt = "Skin not changed.", sChangedTxt = "Skin changed to: ", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin ", sNoExist = " doesn't exists. Enter a number less than 10.",
-    pTextTxt = "Play button text:", pTextNotChangedTxt = "Play button text not changed.", pTextChangedTxt = "Play button text changed to: ",
+    qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Values higher than 2.7 can cause problems.", q01Txt = "WARNING: Values lower than 0.1 can cause problems.", qInvalidTxt = "Invalid value. Make sure to only use numbers.\nExample: 1.2", qChangedTxt = "Quality changed to: ",
+    sChangeTxt = "Skin ID:\nNote: For 0 use 0.1", sInvalidTxt = "Invalid ID. Make sure to only use numbers.", s0Txt = "Skin changed to: 0", sChangedTxt = "Skin changed to: ", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin ", sNoExist = " doesn't exists. Enter a number less than 10.",
+    pTextTxt = "Play button text:",
     sUnlockekdTxt = "You already unlocked the skins.", sUnlockedsTxt = "The following skins were unlocked:", sChickenTxt = "Yellow chicken", sBirdTxt = "Light blue bird", sCowTxt = "Cow", sBird2Txt = "Red bird", sElephantTxt = "Elephant",
     loadingScriptTxt = "Loading Superhex.io Scr1pt...", loadingInfoTxt = "If the script doesn't loads, refresh the website (F5).",
     sAlreadyTxt = "You are already using the skin ",
     keyActionsTxt = "Keys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Show/hide FPS and other info.",
-    partyTxt = "Party ID:", party5Txt = "The ID of the Party can't be less than 5.", party6Txt = "The ID of the Party can't be greater than 6.",
+    partyTxt = "Party ID:", party5Txt = "The party ID must have more than 5 characters.", party6Txt = "The party ID must have less than 6 characters.",
     zoomValueTxt = "Insert zoom value.\nBy default it's 13. (Higher value = less zoom)", zoomValueH = "Value can't be higher than 100.", zoomValueL = "Value can't be less than 3.", zoomValueInvalid = "Invalid value. Make sure to only use numbers.",
     highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, zoomV, math_max_o = Math.max;
 
@@ -76,14 +76,11 @@ window.changeLang = function(write, ing) {
         sChangeTxt = "ID de la Skin:\nNota: Para establecer la skin 0 use 0.1";
         sInvalidTxt = "ID inválido. Solo puedes insertar números.";
         s0Txt = "Skin cambiada a: 0";
-        sNotChangedTxt = "Skin no cambiada.";
         sChangedTxt = "Skin cambiada a: ";
         sErrorTxt = "Se ha producido un error. Asegúrate de insertar un ID válido.";
         sTheSTxt = "La skin ";
         sNoExist = " no existe. Introduce un número menor a 10.";
-        pTextTxt = "Texto del botón Play:";
-        pTextNotChangedTxt = "Texto del botón Play no cambiado.";
-        pTextChangedTxt = "Texto del botón Play cambiado a: ";
+        pTextTxt = "Texto del botón Play (jugar):";
         sUnlockekdTxt = "Ya tienes las skins desbloqueadas.";
         sUnlockedsTxt = "Las siguientes skins fueron desbloqueadas:";
         sChickenTxt = "Pollo amarillo";
@@ -93,8 +90,8 @@ window.changeLang = function(write, ing) {
         sElephantTxt = "Elefante";
         sAlreadyTxt = "Ya estás usando la skin ";
         partyTxt = "ID de la Party:";
-        party5Txt = "El ID de la Party no puede ser menor a 5.";
-        party6Txt = "El ID de la Party no puede ser mayor a 6.";
+        party5Txt = "El ID de la fiesta debe tener más de 5 carácteres.";
+        party6Txt = "El ID de la fiesta debe tener menos de 6 carácteres.";
         keyActionsTxt = "Teclas:\n\n1 = Oculta/muestra la Tabla de clasificación.\n0 = Oculta/muestra la UI.\n2 = Muestra/oculta los FPS y otros datos.";
         document.getElementById("btn2").innerText = "Calidad personalizada";
         document.getElementById("btn3").innerText = "Establecer Skin (ID)";
@@ -279,7 +276,7 @@ window.changeS = function () {
         if (!ChickenS2) localStorage.setItem("followClicked", 1);
         window.changeSkin(0);
         if (!ChickenS2) localStorage.removeItem("followClicked");
-    } else if (SkinPrompt === 0) alert(sNotChangedTxt); else {
+    } else if (SkinPrompt != 0) {
         if (SkinPrompt == 1) {
             if (!TweetS2) localStorage.setItem("tweetClicked", 1);
             window.changeSkin(SkinPrompt);
@@ -309,12 +306,9 @@ window.changeS = function () {
 
 window.changeT1 = function () {
     var Text1Prompt = window.prompt(pTextTxt);
-    if (Text1Prompt === null) {
-        alert(pTextNotChangedTxt);
-    } else {
+    if (Text1Prompt != null && Text1Prompt.length > 0) {
         if (Text1Prompt != "Play") localStorage.setItem("Text1TBM", Text1Prompt); else localStorage.removeItem("Text1TBM");
         document.getElementById("button-play-text").innerText = Text1Prompt;
-        alert(pTextChangedTxt + Text1Prompt);
     }
 };
 
