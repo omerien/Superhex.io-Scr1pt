@@ -9,7 +9,7 @@
 // @description  Mod for Superhex.io
 // @description:es-ES Mod para Superhex.io
 // @author       TBM13
-// @match        http://superhex.io/*
+// @match        *://superhex.io/*
 // @match        www.superhex.io/*
 // @grant        none
 
@@ -50,10 +50,10 @@ var style = document.createElement("style"),
     sUnlockekdTxt = "You already unlocked the skins.", sUnlockedsTxt = "The following skins were unlocked:", sChickenTxt = "Yellow chicken", sBirdTxt = "Light blue bird", sCowTxt = "Cow", sBird2Txt = "Red bird", sElephantTxt = "Elephant",
     loadingScriptTxt = "Loading Superhex.io Scr1pt...", loadingInfoTxt = "If the script doesn't loads, refresh the website (F5).",
     sAlreadyTxt = "You are already using the skin ",
-    keyActionsTxt = "Keys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Show/hide FPS and other info.",
+    keyActionsTxt = "Hotkeys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Hide/show FPS and connection info.",
     partyTxt = "Party ID:", party5Txt = "The party ID must have more than 5 characters.", party6Txt = "The party ID must have less than 6 characters.",
-    zoomValueTxt = "Insert zoom value.\nBy default it's 13. (Higher value = less zoom)", zoomValueH = "Value can't be higher than 100.", zoomValueL = "Value can't be less than 3.", zoomValueInvalid = "Invalid value. Make sure to only use numbers.",
-    highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, zoomV, math_max_o = Math.max;
+    zoomValueTxt = "Insert zoom value.\nBy default is 13 (higher value = more zoom)\nNote: You can also use the mouse wheel to zoom in/out.", zoomValueH = "Value can't be higher than 60.", zoomValueL = "Value can't be less than 10.", zoomValueInvalid = "Invalid value. Make sure to only use numbers.",
+    highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, math_max_o = Math.max;
 
 style.type = "text/css";
 style.innerHTML = 'button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white; background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.2s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #5ed15e; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #4e9c4e;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;} button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.2s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';
@@ -90,7 +90,7 @@ window.changeLang = function(write, ing) {
         partyTxt = "ID de la Party:";
         party5Txt = "El ID de la fiesta debe tener más de 5 carácteres.";
         party6Txt = "El ID de la fiesta debe tener menos de 6 carácteres.";
-        keyActionsTxt = "Teclas:\n\n1 = Oculta/muestra la Tabla de clasificación.\n0 = Oculta/muestra la UI.\n2 = Muestra/oculta los FPS y otros datos.";
+        keyActionsTxt = "Teclas:\n\n1 = Oculta/muestra la Tabla de clasificación.\n0 = Oculta/muestra la UI.\n2 = Oculta/muestra los FPS y datos de conexión.";
         document.getElementById("btn2").innerText = "Calidad personalizada";
         document.getElementById("btn3").innerText = "Establecer Skin (ID)";
         document.getElementById("btn5").innerText = "Texto del botón Play";
@@ -101,9 +101,9 @@ window.changeLang = function(write, ing) {
         document.getElementById("btn7").setAttribute("onclick", "changeLang(false, true);");
         document.getElementById("btn8").innerText = "Crear Party";
         document.getElementById("scrText2").innerText = keyActionsTxt;
-        zoomValueTxt = "Inserta el valor del hack de zoom.\nPor defecto es 13. (valor mayor = menos zoom)";
-        zoomValueH = "El valor no puede ser mayor a 100.";
-        zoomValueL = "El valor no puede ser menor a 3.";
+        zoomValueTxt = "Inserta el valor del hack de zoom.\nPor defecto es 13. (valor mayor = más zoom)\nNota: También puedes usar la rueda del mouse para acercar/alejar la cámara.";
+        zoomValueH = "El valor no puede ser mayor a 60.";
+        zoomValueL = "El valor no puede ser menor a 10.";
         zoomValueInvalid = "Valor inválido. Solo puedes usar números.";
         highQB.innerText = "Alta";
         mediumQB.innerText = "Media";
@@ -138,7 +138,7 @@ window.onload = function () {
     if (AdsTBM) window.removeAds(false);
     if (Text1TBM) document.getElementById("button-play-text").innerText = Text1TBM;
     window.changeQuality(currQuality == null ? 0.75 : currQuality);
-    zoomV = zoomValue ? Number(zoomValue) : zoomV = 13;
+    window.zoomValue = zoomValue ? Number(zoomValue) : 13;
     if (zoomHack == "True") window.zoomH(false);
     if (playBtn.className == "green") playBtn.setAttribute("class", "scr1ptGreen");
     if (playAgBtn.className == "playagain green") playAgBtn.setAttribute("class", "playagain scr1ptGreen");
@@ -351,8 +351,27 @@ window.zoomH = function (message) {
         localStorage.removeItem("zoomTBM");
         Math.max = math_max_o;
     } else {
-        Math.max = function () { return zoomV; };
+        Math.max = function (a, b) {
+            return a == window.innerWidth / 40 / 2 / .75 && b == window.innerHeight / 40 / Math.sqrt(3) ? window.zoomValue : math_max_o(a, b);
+        };
         if (message) localStorage.setItem("zoomTBM", "True");
+        document.onmousewheel = function(e) {
+            var delta;
+            if (!e) e = window.event;
+            if (e.wheelDelta) delta = e.wheelDelta / 60; else if (e.detail) delta = -e.detail / 2;
+
+            var oldValue = window.zoomValue;
+            if (delta !== null && delta > 0) {
+               if (window.zoomValue < 60) window.zoomValue += window.zoomValue < 16 ? 1 : 2;
+            } else {
+               if (window.zoomValue > 10) window.zoomValue -= window.zoomValue < 16 ? 1 : 2;
+            }
+
+            if (oldValue != window.zoomValue) {
+                window.dispatchEvent(new Event('resize'));
+                localStorage.setItem("zoomValTBM", window.zoomValue);
+            }
+        };
     }
     zoomHack = localStorage.getItem("zoomTBM");
 };
@@ -361,8 +380,8 @@ window.setZoomH = function () {
     var zoomHPrompt = window.prompt(zoomValueTxt);
     if (zoomHPrompt !== null && zoomHPrompt.length != 0) {
         zoomHPrompt = Number(zoomHPrompt);
-        if (zoomHPrompt > 100) alert(zoomValueH); else if (zoomHPrompt < 3) alert(zoomValueL); else if (zoomHPrompt.toString() == "NaN") alert(zoomValueInvalid); else {
-            zoomV = zoomHPrompt;
+        if (zoomHPrompt > 60) alert(zoomValueH); else if (zoomHPrompt < 10) alert(zoomValueL); else if (zoomHPrompt.toString() == "NaN") alert(zoomValueInvalid); else {
+            window.zoomValue = zoomHPrompt;
             localStorage.setItem("zoomValTBM", zoomHPrompt);
         }
     }
