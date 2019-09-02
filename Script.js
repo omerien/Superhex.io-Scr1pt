@@ -43,7 +43,7 @@ var style = document.createElement("style"),
     Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), zoomValue = localStorage.getItem("zoomValTBM"),
     skinPag = 1,
     superhex = window.superhex,
-    adsDeleted = false, adsRestoredTxt = "Ads restored. To see the changes, reload the website.", adBlockedTxt = "Ad blocked by Superhex.io Scr1pt",
+    adsDeleted = false, adsRestoredTxt = "Ads restored. To see the changes, reload the website.",
     qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Values higher than 2.7 can cause problems.", q01Txt = "WARNING: Values lower than 0.1 can cause problems.", qInvalidTxt = "Invalid value. Make sure to only use numbers.\nExample: 1.2", qChangedTxt = "Quality changed to: ",
     sChangeTxt = "Skin ID:", sInvalidTxt = "Invalid ID. Make sure to only use numbers.", sChangedTxt = "Skin changed.", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin doesn't exists.",
     pTextTxt = "Play button text:",
@@ -67,7 +67,6 @@ window.changeLang = function(write, ing) {
         document.getElementById("btn7").setAttribute("onclick", "changeLang(true, false);");
     } else {
         adsRestoredTxt = "Anuncios restaurados. Para ver los cambios, recarga la página.";
-        adBlockedTxt = "Anuncio bloqueado por Superhex.io Scr1pt";
         qChangeTxt = "Insertar valor. Ejemplo:\n0.25: Muy baja\n0.5: Baja\n0.75: Media\n1: Alta\n1.5: Muy alta\n2: Ultra";
         q27Txt = "ADVERTENCIA: Establecer la calidad mayor a 2.7 puede causar problemas.";
         q01Txt = "ADVERTENCIA: Establecer la calidad menor a 0.1 puede causar problemas.";
@@ -210,11 +209,14 @@ window.removeAds = function (checkBox) {
 window.rAds = function () {
     superhex.clickPlay = superhex.aipComplete;
     superhex.clickPlayAgain = superhex.aipComplete;
-    var Ad = document.getElementById("TKS_superhex-io_300x250");
-    Ad.innerHTML = adBlockedTxt;
-    Ad.setAttribute("id", "blockedAd1");
-    Ad.setAttribute("data-google-query-id", "null");
-    Ad.setAttribute("style", "vertical-align: bottom; margin: 0 auto; text-align: center; background-color: white;");
+    window.removeAdElement(document.getElementById("TKS_superhex-io_300x250"));
+    window.removeAdElement(document.getElementById("respawn-ad"));
+    window.removeAdElement(document.getElementsByClassName("curse-ad")[0]);
+};
+
+window.removeAdElement = function (elem) {
+    elem.innerHTML = "";
+    elem.setAttribute("style", "opacity: 0;");
 };
 
 document.onkeyup = function (e) {
