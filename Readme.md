@@ -1,7 +1,5 @@
 # Superhex.io Scr1pt
 
-**This script is no longer under active development. If you want to contribute with new features, bug fixes or whatever, I invite you to make a pull request.**
-
 <b>🔰 This script has the following features:</b>
 * Zoom Hack (with mouse wheel support).
 * Custom Quality control (you can change the game quality to any value).
