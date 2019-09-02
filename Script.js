@@ -56,7 +56,7 @@ var style = document.createElement("style"),
     highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, math_max_o = Math.max;
 
 style.type = "text/css";
-style.innerHTML = 'button.scr1ptGreen, a.scr1ptGreen {line-height: 1; outline: none; color: white; background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.2s;} button.scr1ptGreen:hover, a.scr1ptGreen:hover {background-color: #5ed15e; cursor: pointer;} button.scr1ptGreen:active, a.scr1ptGreen:active {background-color: #4e9c4e;} button.scr1ptGreen.unselected {opacity: 0.5;} button.scr1ptGreen .spinner {display: none; vertical-align: middle;} button.scr1ptGreen.button-loading {background-color: #7D7D7D; color: white;} button.scr1ptGreen.button-loading .spinner {display: inline-block;} button.scr1ptGrey {line-height: 1; color: #757575; background-color: white; transition: 0.2s;} button.scr1ptGrey:hover {background-color: #cccccc; color: #5e5e5e; cursor: pointer;}';
+style.innerHTML = '.scr1ptPanel {background:rgba(0,60,0,0.5); border-style: solid; border-width: 3px; border-color: rgb(60,185,60,0.5); border-radius: 5px;} .scr1ptButton {line-height: 1; outline: none; color: white; background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.2s;} .scr1ptButton:hover {background-color: #5ed15e; cursor: pointer;} .scr1ptButton:active {background-color: #4e9c4e;} .scr1ptButton.unselected {opacity: 0.5;} .scr1ptButton .spinner {display: none; vertical-align: middle;} .scr1ptButton.button-loading {background-color: #7D7D7D; color: white;} .scr1ptButton.button-loading .spinner {display: inline-block;} .scr1ptButton-grey {color: black; background-color: #f5f5f5;} .scr1ptButton-grey:hover {background-color: white; color: #5e5e5e;} .scr1ptButton-grey:active {background-color: #cccccc; color: #5e5e5e;} .scr1ptButton-gold {background-color: #c9c818;} .scr1ptButton-gold:hover {background-color: #d9d71a;} .scr1ptButton-gold:active {background-color: #aba913;}';
 document.getElementsByTagName("head")[0].appendChild(style);
 
 window.changeLang = function(write, ing) {
@@ -90,7 +90,7 @@ window.changeLang = function(write, ing) {
         partyTxt = "ID de la Party:";
         party5Txt = "El ID de la fiesta debe tener más de 5 carácteres.";
         party6Txt = "El ID de la fiesta debe tener menos de 6 carácteres.";
-        keyActionsTxt = "Teclas:\n\n1 = Oculta/muestra la Tabla de clasificación.\n0 = Oculta/muestra la UI.\n2 = Oculta/muestra los FPS y datos de conexión.";
+        keyActionsTxt = "Teclas:\n\n1 = Oculta/muestra la Tabla de clasificación.\n0 = Oculta/muestra la UI.\n2 = Oculta/muestra los FPS y datos\n de conexión.";
         document.getElementById("btn2").innerText = "Calidad personalizada";
         document.getElementById("btn3").innerText = "Establecer Skin (ID)";
         document.getElementById("btn5").innerText = "Texto del botón Play";
@@ -140,15 +140,15 @@ window.onload = function () {
     window.changeQuality(currQuality == null ? 0.75 : currQuality);
     window.zoomValue = zoomValue ? Number(zoomValue) : 13;
     if (zoomHack == "True") window.zoomH(false);
-    if (playBtn.className == "green") playBtn.setAttribute("class", "scr1ptGreen");
-    if (playAgBtn.className == "playagain green") playAgBtn.setAttribute("class", "playagain scr1ptGreen");
-    if (mMenuBtn.className == "mainmenu grey") mMenuBtn.setAttribute("class", "mainmenu scr1ptGrey");
+    if (playBtn.className == "green") playBtn.setAttribute("class", "scr1ptButton");
+    if (playAgBtn.className == "playagain green") playAgBtn.setAttribute("class", "playagain scr1ptButton");
+    if (mMenuBtn.className == "mainmenu grey") mMenuBtn.setAttribute("class", "mainmenu scr1ptButton scr1ptButton-grey");
     highQB.setAttribute("onclick", "changeQuality(1);");
-    highQB.setAttribute("class", highQB.className == "green" ? "scr1ptGreen" : "scr1ptGreen unselected");
+    highQB.setAttribute("class", highQB.className == "green" ? "scr1ptButton" : "scr1ptButton unselected");
     mediumQB.setAttribute("onclick", "changeQuality(0.75);");
-    mediumQB.setAttribute("class", mediumQB.className == "green" ? "scr1ptGreen" : "scr1ptGreen unselected");
+    mediumQB.setAttribute("class", mediumQB.className == "green" ? "scr1ptButton" : "scr1ptButton unselected");
     lowQB.setAttribute("onclick", "changeQuality(0.5);");
-    lowQB.setAttribute("class", lowQB.className == "green" ? "scr1ptGreen" : "scr1ptGreen unselected");
+    lowQB.setAttribute("class", lowQB.className == "green" ? "scr1ptButton" : "scr1ptButton unselected");
 };
 
 window.skinChangePage = function (next, cantidad) {
@@ -189,9 +189,9 @@ window.changeQuality = function (qualityValue) {
     currQuality = localStorage.getItem("quality");
     document.getElementById("btn2").innerText = Language == "ES" ? "Calidad personalizada" : "Custom Quality";
     if (currQuality != 1 && currQuality != 0.75 && currQuality != 0.5) {
-        document.getElementById("btn2").setAttribute("class", "scr1ptGreen");
+        document.getElementById("btn2").setAttribute("class", "scr1ptButton");
         document.getElementById("btn2").innerText += " (" + currQuality.toString() + ")";
-    } else document.getElementById("btn2").setAttribute("class", "scr1ptGreen unselected");
+    } else document.getElementById("btn2").setAttribute("class", "scr1ptButton unselected");
 };
 
 window.removeAds = function (checkBox) {
@@ -388,31 +388,36 @@ window.setZoomH = function () {
 };
 
 var scrText1 = document.createElement("h2");
-scrText1.setAttribute("style", "color: white; position: fixed; top: 80px; left: 30px;");
+scrText1.setAttribute("style", "color: white; position: fixed; top: 70px; left: 5px;");
 scrText1.innerText = loadingScriptTxt;
 document.getElementById("homepage").appendChild(scrText1);
 
 var scrTextInfo = document.createElement("h4");
-scrTextInfo.setAttribute("style", "color: white; position: fixed; top: 130px; left: 30px;");
+scrTextInfo.setAttribute("style", "color: white; position: fixed; top: 120px; left: 5px;");
 scrTextInfo.innerText = loadingInfoTxt;
 document.getElementById("homepage").appendChild(scrTextInfo);
 
-window.mkGui = function () {
-
+window.mkGui = function() {
     scrTextInfo.remove();
-    scrText1.innerText = "Superhex.io Scr1pt v1.8.5";
+    scrText1.innerText = "Superhex.io Scr1pt";
+
+    var mainPanel = document.createElement("Div");
+    mainPanel.setAttribute("style", "position: fixed; top: 130px; left: -4px; height:350px; width:170px;");
+    mainPanel.setAttribute("class", "scr1ptPanel");
+    mainPanel.setAttribute("id", "scr1ptPanel");
+    document.getElementById("homepage").appendChild(mainPanel);
 
     var btn = document.createElement("Button");
-    btn.setAttribute("style", "position: fixed; top: 140px; left: 30px; height: 25px; width: 140px;");
-    btn.setAttribute("class", "scr1ptGreen");
+    btn.setAttribute("style", "position: relative; top: 10px; left: 15px; height: 25px; width: 140px;");
+    btn.setAttribute("class", "scr1ptButton scr1ptButton-gold");
     btn.setAttribute("type", "button");
     btn.setAttribute("id", "btn");
     btn.innerText = "GitHub";
     btn.setAttribute("onclick", "goGitHub();");
-    document.getElementById("homepage").appendChild(btn);
+    mainPanel.appendChild(btn);
 
     var btn2 = document.createElement("Button");
-    btn2.setAttribute("class", "scr1ptGreen unselected");
+    btn2.setAttribute("class", "scr1ptButton unselected");
     btn2.setAttribute("type", "button");
     btn2.setAttribute("id", "btn2");
     btn2.innerText = "Custom Quality";
@@ -420,101 +425,112 @@ window.mkGui = function () {
     document.getElementById("button-quality-high").parentElement.appendChild(btn2);
 
     var btnGF = document.createElement("Button");
-    btnGF.setAttribute("style", "position: fixed; top: 175px; left: 30px; height: 25px; width: 140px;");
-    btnGF.setAttribute("class", "scr1ptGreen");
+    btnGF.setAttribute("style", "position: relative; top: 20px; left: 15px; height: 25px; width: 140px;");
+    btnGF.setAttribute("class", "scr1ptButton scr1ptButton-gold");
     btnGF.setAttribute("type", "button");
     btnGF.setAttribute("id", "btnGF");
     btnGF.innerText = "Greasy Fork";
     btnGF.setAttribute("onclick", "goGreasyFork();");
-    document.getElementById("homepage").appendChild(btnGF);
+    mainPanel.appendChild(btnGF);
 
     var btn3 = document.createElement("Button");
-    btn3.setAttribute("style", "position: fixed; top: 210px; left: 30px; height: 25px; width: 140px;");
-    btn3.setAttribute("class", "scr1ptGreen");
+    btn3.setAttribute("style", "position: relative; top: 30px; left: 15px; height: 25px; width: 140px;");
+    btn3.setAttribute("class", "scr1ptButton");
     btn3.setAttribute("type", "button");
     btn3.setAttribute("id", "btn3");
     btn3.innerText = "Set Skin (ID)";
     btn3.setAttribute("onclick", "changeS();");
-    document.getElementById("homepage").appendChild(btn3);
+    mainPanel.appendChild(btn3);
 
     var btn5 = document.createElement("Button");
-    btn5.setAttribute("style", "position: fixed; top: 245px; left: 30px; height: 25px; width: 140px;");
-    btn5.setAttribute("class", "scr1ptGreen");
+    btn5.setAttribute("style", "position: relative; top: 40px; left: 15px; height: 25px; width: 140px;");
+    btn5.setAttribute("class", "scr1ptButton");
     btn5.setAttribute("type", "button");
     btn5.setAttribute("id", "btn5");
     btn5.innerText = "Set Play button text";
     btn5.setAttribute("onclick", "changeT1();");
-    document.getElementById("homepage").appendChild(btn5);
-
-    var Check1 = document.createElement("INPUT");
-    Check1.setAttribute("type", "checkbox");
-    Check1.setAttribute("id", "checkAdBlock");
-    Check1.setAttribute("style", "position: fixed; top: 383px; left: 30px;");
-    Check1.setAttribute("onclick", "removeAds(true);");
-    document.getElementById("homepage").appendChild(Check1);
-
-    Check1.checked = AdsTBM;
-
-    var check1Text = document.createElement("h5");
-    check1Text.setAttribute("style", "color: white; position: fixed; top: 363px; left: 50px;");
-    check1Text.setAttribute("id", "check1Text");
-    check1Text.innerText = "Remove ads";
-    document.getElementById("homepage").appendChild(check1Text);
+    mainPanel.appendChild(btn5);
 
     var btn6 = document.createElement("Button");
-    btn6.setAttribute("style", "position: fixed; top: 280px; left: 30px; height: 25px; width: 140px;");
-    btn6.setAttribute("class", "scr1ptGreen");
+    btn6.setAttribute("style", "position: relative; top: 50px; left: 15px; height: 25px; width: 140px;");
+    btn6.setAttribute("class", "scr1ptButton");
     btn6.setAttribute("type", "button");
     btn6.setAttribute("id", "btn6");
     btn6.innerText = "Unlock skins";
     btn6.setAttribute("onclick", "unlockSK();");
-    document.getElementById("homepage").appendChild(btn6);
+    mainPanel.appendChild(btn6);
 
     var btn8 = document.createElement("Button");
-    btn8.setAttribute("style", "position: fixed; top: 315px; left: 30px; height: 25px; width: 140px;");
-    btn8.setAttribute("class", "scr1ptGreen");
+    btn8.setAttribute("style", "position: relative; top: 60px; left: 15px; height: 25px; width: 140px;");
+    btn8.setAttribute("class", "scr1ptButton");
     btn8.setAttribute("type", "button");
     btn8.setAttribute("id", "btn8");
     btn8.innerText = "Create Party";
     btn8.setAttribute("onclick", "mkParty();");
-    document.getElementById("homepage").appendChild(btn8);
+    mainPanel.appendChild(btn8);
 
     var btn7 = document.createElement("Button");
-    btn7.setAttribute("style", "position: fixed; top: 350px; left: 30px; height: 25px; width: 140px;");
-    btn7.setAttribute("class", "scr1ptGreen");
+    btn7.setAttribute("style", "position: relative; top: 70px; left: 15px; height: 25px; width: 140px;");
+    btn7.setAttribute("class", "scr1ptButton");
     btn7.setAttribute("type", "button");
     btn7.setAttribute("id", "btn7");
     btn7.innerText = "Español (Spanish)";
     btn7.setAttribute("onclick", "changeLang(true, false);");
-    document.getElementById("homepage").appendChild(btn7);
+    mainPanel.appendChild(btn7);
 
-    var scrText2 = document.createElement("h4");
-    scrText2.setAttribute("style", "color: white; position: fixed; top: 50px; right: 10px;");
-    scrText2.setAttribute("id", "scrText2");
-    scrText2.innerText = keyActionsTxt;
-    document.getElementById("homepage").appendChild(scrText2);
+    var versionText = document.createElement("h5");
+    scrTextInfo.setAttribute("style", "color: rgba(255,255,255,0.6); position: absolute; bottom: -20px; right: 5px;");
+    scrTextInfo.innerText = "v1.9.0";
+    mainPanel.appendChild(scrTextInfo);
+
+    var Check1 = document.createElement("INPUT");
+    Check1.setAttribute("type", "checkbox");
+    Check1.setAttribute("id", "checkAdBlock");
+    Check1.setAttribute("style", "position: absolute; top: 260px; left: 15px;");
+    Check1.setAttribute("onclick", "removeAds(true);");
+    mainPanel.appendChild(Check1);
+
+    Check1.checked = AdsTBM;
+
+    var check1Text = document.createElement("h5");
+    check1Text.setAttribute("style", "color: white; position: absolute; top: 240px; left: 35px;");
+    check1Text.setAttribute("id", "check1Text");
+    check1Text.innerText = "Remove ads";
+    mainPanel.appendChild(check1Text);
 
     var Check2 = document.createElement("INPUT");
     Check2.setAttribute("type", "checkbox");
     Check2.setAttribute("id", "checkZoom");
-    Check2.setAttribute("style", "position: fixed; top: 408px; left: 30px;");
+    Check2.setAttribute("style", "position: absolute; top: 285px; left: 15px;");
     Check2.setAttribute("onclick", "zoomH(true);");
-    document.getElementById("homepage").appendChild(Check2);
+    mainPanel.appendChild(Check2);
 
     Check2.checked = zoomHack == "True";
 
     var check2Text = document.createElement("h5");
-    check2Text.setAttribute("style", "color: white; position: fixed; top: 388px; left: 50px;");
+    check2Text.setAttribute("style", "color: white; position: absolute; top: 265px; left: 35px;");
     check2Text.setAttribute("id", "check2Text");
     check2Text.innerText = "Zoom Hack";
-    document.getElementById("homepage").appendChild(check2Text);
+    mainPanel.appendChild(check2Text);
 
     var btnZHS = document.createElement("Button");
-    btnZHS.setAttribute("style", "position: fixed; top: 408px; left: 145px; height: 16px; width: 16px;");
-    btnZHS.setAttribute("class", "scr1ptGreen");
+    btnZHS.setAttribute("style", "position: absolute; top: 286px; left: 130px; height: 16px; width: 16px;");
+    btnZHS.setAttribute("class", "scr1ptButton");
     btnZHS.innerHTML = "<img src='https://lh3.googleusercontent.com/Abm4DjvPOP55GK2MCe9gYh8M1ZJa7ws71oXcW2q6Rl1pQXIQ_bUcVxbN5vZ8_6pmP248O-uQEN2fUxq-xzFlzefdXyEBakvzEgGKzIwSkcdSBHdM2PwtgpgXbMvbP_N7FSI4BYIujg=s16-no' style='position: absolute; left: 0px; top: 0px;'/>";
     btnZHS.setAttribute("type", "button");
     btnZHS.setAttribute("id", "btnZHS");
     btnZHS.setAttribute("onclick", "setZoomH();");
-    document.getElementById("homepage").appendChild(btnZHS);
+    mainPanel.appendChild(btnZHS);
+
+    var hotkeysPanel = document.createElement("Div");
+    hotkeysPanel.setAttribute("style", "position: fixed; bottom: -4px; right: -4px; height:150px; width:300px;");
+    hotkeysPanel.setAttribute("class", "scr1ptPanel");
+    hotkeysPanel.setAttribute("id", "scr1ptPanel");
+    document.getElementById("homepage").appendChild(hotkeysPanel);
+
+    var scrText2 = document.createElement("h4");
+    scrText2.setAttribute("style", "color: white; position: relative; left: 10px;");
+    scrText2.setAttribute("id", "scrText2");
+    scrText2.innerText = keyActionsTxt;
+    hotkeysPanel.appendChild(scrText2);
 };
