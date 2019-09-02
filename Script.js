@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Superhex.io Scr1pt - Zoom Hack and more
 // @namespace    Superhex.io Scr1pt
-// @version      1.8.5
+// @version      1.9.0
 // @license      MIT
 // @homepageURL  https://github.com/TBM13/Superhex.io-Scr1pt
 // @contributionURL https://www.paypal.me/tbm13
