@@ -44,7 +44,7 @@ var style = document.createElement("style"),
     skinPag = 1,
     superhex = window.superhex,
     invalidValueTxt = "Invalid value. Make sure to only use numbers.",
-    adsDeleted = false, adsRestoredTxt = "Ads restored. To see the changes, reload the website.",
+    adsDeleted = false, adsRestoredTxt = "Ads restored. Reload the website to apply the changes.",
     qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Values higher than 2.7 can cause problems.", q01Txt = "WARNING: Values lower than 0.1 can cause problems.", qInvalidTxt = "\nExample: 1.2", qChangedTxt = "Quality changed to: ",
     sChangeTxt = "Skin ID:", sInvalidTxt = "Invalid ID. Make sure to only use numbers.", sChangedTxt = "Skin changed.", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin doesn't exists.",
     pTextTxt = "Play button text:",
@@ -53,7 +53,7 @@ var style = document.createElement("style"),
     sAlreadyTxt = "You are already using the skin ",
     keyActionsTxt = "Hotkeys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Hide/show FPS and connection info.",
     partyTxt = "Party ID:", party5Txt = "The party ID must have more than 5 characters.", party6Txt = "The party ID must have less than 6 characters.",
-    zoomValueTxt = "Insert zoom value.\nBy default is 13 (higher value = more zoom)\nNote: You can also use the mouse wheel to zoom in/out.", zoomValueH = "Value can't be higher than 60.", zoomValueL = "Value can't be less than 5.",
+    zoomValueTxt = "Insert zoom value.\nBy default is 13 (higher value = more zoom)\nNote: You can also use the mouse wheel to zoom in/out.", zoomValueH = "Value can't be greater than 60.", zoomValueL = "Value can't be less than 5.",
     highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, math_max_o = Math.max;
 
 style.type = "text/css";
@@ -69,12 +69,12 @@ window.changeLang = function(write, ing) {
     } else {
         adsRestoredTxt = "Anuncios restaurados. Para ver los cambios, recarga la página.";
         qChangeTxt = "Insertar valor. Ejemplo:\n0.25: Muy baja\n0.5: Baja\n0.75: Media\n1: Alta\n1.5: Muy alta\n2: Ultra";
-        q27Txt = "ADVERTENCIA: Establecer la calidad mayor a 2.7 puede causar problemas.";
-        q01Txt = "ADVERTENCIA: Establecer la calidad menor a 0.1 puede causar problemas.";
+        q27Txt = "ADVERTENCIA: Un valor mayor a 2.7 puede causar problemas.";
+        q01Txt = "ADVERTENCIA: Un valor menor a 0.1 puede causar problemas.";
         qInvalidTxt = "\nEjemplo: 1.2";
         qChangedTxt = "Calidad cambiada a: ";
         sChangeTxt = "ID de la Skin:";
-        sInvalidTxt = "ID inválido. Solo puedes insertar números.";
+        sInvalidTxt = "ID inválido. Asegúrate de solo usar números.";
         sChangedTxt = "Skin cambiada.";
         sErrorTxt = "Se ha producido un error. Asegúrate de insertar un ID válido.";
         sTheSTxt = "La skin no existe.";
