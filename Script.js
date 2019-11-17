@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Superhex.io Scr1pt - Zoom Hack and more
 // @namespace    Superhex.io Scr1pt
-// @version      1.9.0
+// @version      1.9.1
 // @license      MIT
 // @homepageURL  https://github.com/TBM13/Superhex.io-Scr1pt
 // @contributionURL https://www.paypal.me/tbm13
@@ -483,7 +483,7 @@ window.mkGui = function() {
 
     var versionText = document.createElement("h5");
     scrTextInfo.setAttribute("style", "color: rgba(255,255,255,0.6); position: absolute; bottom: -20px; right: 5px;");
-    scrTextInfo.innerText = "v1.9.0";
+    scrTextInfo.innerText = "v1.9.1";
     mainPanel.appendChild(scrTextInfo);
 
     var Check1 = document.createElement("INPUT");
