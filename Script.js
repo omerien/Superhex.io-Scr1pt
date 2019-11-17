@@ -43,8 +43,9 @@ var style = document.createElement("style"),
     Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), zoomValue = localStorage.getItem("zoomValTBM"),
     skinPag = 1,
     superhex = window.superhex,
+    invalidValueTxt = "Invalid value. Make sure to only use numbers.",
     adsDeleted = false, adsRestoredTxt = "Ads restored. To see the changes, reload the website.",
-    qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Values higher than 2.7 can cause problems.", q01Txt = "WARNING: Values lower than 0.1 can cause problems.", qInvalidTxt = "Invalid value. Make sure to only use numbers.\nExample: 1.2", qChangedTxt = "Quality changed to: ",
+    qChangeTxt = "Insert value. Example:\n0.25: Very low\n0.5: Low\n0.75: Medium\n1: High\n1.5: Very high\n2: Ultra", q27Txt = "WARNING: Values higher than 2.7 can cause problems.", q01Txt = "WARNING: Values lower than 0.1 can cause problems.", qInvalidTxt = "\nExample: 1.2", qChangedTxt = "Quality changed to: ",
     sChangeTxt = "Skin ID:", sInvalidTxt = "Invalid ID. Make sure to only use numbers.", sChangedTxt = "Skin changed.", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin doesn't exists.",
     pTextTxt = "Play button text:",
     sUnlockekdTxt = "You already unlocked the skins.", sUnlockedsTxt = "The following skins were unlocked:", sChickenTxt = "Yellow chicken", sBirdTxt = "Light blue bird", sCowTxt = "Cow", sBird2Txt = "Red bird", sElephantTxt = "Elephant",
@@ -52,7 +53,7 @@ var style = document.createElement("style"),
     sAlreadyTxt = "You are already using the skin ",
     keyActionsTxt = "Hotkeys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Hide/show FPS and connection info.",
     partyTxt = "Party ID:", party5Txt = "The party ID must have more than 5 characters.", party6Txt = "The party ID must have less than 6 characters.",
-    zoomValueTxt = "Insert zoom value.\nBy default is 13 (higher value = more zoom)\nNote: You can also use the mouse wheel to zoom in/out.", zoomValueH = "Value can't be higher than 60.", zoomValueL = "Value can't be less than 5.", zoomValueInvalid = "Invalid value. Make sure to only use numbers.",
+    zoomValueTxt = "Insert zoom value.\nBy default is 13 (higher value = more zoom)\nNote: You can also use the mouse wheel to zoom in/out.", zoomValueH = "Value can't be higher than 60.", zoomValueL = "Value can't be less than 5.",
     highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, math_max_o = Math.max;
 
 style.type = "text/css";
@@ -70,7 +71,7 @@ window.changeLang = function(write, ing) {
         qChangeTxt = "Insertar valor. Ejemplo:\n0.25: Muy baja\n0.5: Baja\n0.75: Media\n1: Alta\n1.5: Muy alta\n2: Ultra";
         q27Txt = "ADVERTENCIA: Establecer la calidad mayor a 2.7 puede causar problemas.";
         q01Txt = "ADVERTENCIA: Establecer la calidad menor a 0.1 puede causar problemas.";
-        qInvalidTxt = "Valor inválido. Solo puedes insertar números.\nEjemplo: 1.2";
+        qInvalidTxt = "\nEjemplo: 1.2";
         qChangedTxt = "Calidad cambiada a: ";
         sChangeTxt = "ID de la Skin:";
         sInvalidTxt = "ID inválido. Solo puedes insertar números.";
@@ -103,7 +104,7 @@ window.changeLang = function(write, ing) {
         zoomValueTxt = "Inserta el valor del hack de zoom.\nPor defecto es 13. (valor mayor = más zoom)\nNota: También puedes usar la rueda del mouse para acercar/alejar la cámara.";
         zoomValueH = "El valor no puede ser mayor a 60.";
         zoomValueL = "El valor no puede ser menor a 10.";
-        zoomValueInvalid = "Valor inválido. Solo puedes usar números.";
+        invalidValueTxt = "Valor inválido. Asegúrate de solo usar números.";
         highQB.innerText = "Alta";
         mediumQB.innerText = "Media";
         lowQB.innerText = "Baja";
@@ -252,7 +253,7 @@ window.changeQ = function () {
     var QualityPrompt = Number(window.prompt(qChangeTxt));
     if (QualityPrompt > 2.7) alert(q27Txt);
     if (QualityPrompt < 0.1 && QualityPrompt > 0) alert(q01Txt);
-    if (QualityPrompt.toString() == "NaN") alert(qInvalidTxt); else {
+    if (QualityPrompt.toString() == "NaN") alert(invalidValueTxt + qInvalidTxt); else {
         if (QualityPrompt === 0) return;
         window.changeQuality(QualityPrompt);
         alert(qChangedTxt + QualityPrompt);
@@ -382,7 +383,7 @@ window.setZoomH = function () {
     var zoomHPrompt = window.prompt(zoomValueTxt);
     if (zoomHPrompt !== null && zoomHPrompt.length != 0) {
         zoomHPrompt = Number(zoomHPrompt);
-        if (zoomHPrompt > 60) alert(zoomValueH); else if (zoomHPrompt < 5) alert(zoomValueL); else if (zoomHPrompt.toString() == "NaN") alert(zoomValueInvalid); else {
+        if (zoomHPrompt > 60) alert(zoomValueH); else if (zoomHPrompt < 5) alert(zoomValueL); else if (zoomHPrompt.toString() == "NaN") alert(invalidValueTxt); else {
             window.zoomValue = zoomHPrompt;
             localStorage.setItem("zoomValTBM", zoomHPrompt);
         }
