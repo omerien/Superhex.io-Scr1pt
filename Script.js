@@ -52,7 +52,7 @@ var style = document.createElement("style"),
     sAlreadyTxt = "You are already using the skin ",
     keyActionsTxt = "Hotkeys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Hide/show FPS and connection info.",
     partyTxt = "Party ID:", party5Txt = "The party ID must have more than 5 characters.", party6Txt = "The party ID must have less than 6 characters.",
-    zoomValueTxt = "Insert zoom value.\nBy default is 13 (higher value = more zoom)\nNote: You can also use the mouse wheel to zoom in/out.", zoomValueH = "Value can't be higher than 60.", zoomValueL = "Value can't be less than 10.", zoomValueInvalid = "Invalid value. Make sure to only use numbers.",
+    zoomValueTxt = "Insert zoom value.\nBy default is 13 (higher value = more zoom)\nNote: You can also use the mouse wheel to zoom in/out.", zoomValueH = "Value can't be higher than 60.", zoomValueL = "Value can't be less than 5.", zoomValueInvalid = "Invalid value. Make sure to only use numbers.",
     highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, math_max_o = Math.max;
 
 style.type = "text/css";
@@ -366,7 +366,7 @@ window.zoomH = function (message) {
             if (delta !== null && delta > 0) {
                if (window.zoomValue < 60) window.zoomValue += window.zoomValue < 16 ? 1 : 2;
             } else {
-               if (window.zoomValue > 10) window.zoomValue -= window.zoomValue < 16 ? 1 : 2;
+               if (window.zoomValue > 5) window.zoomValue -= window.zoomValue < 16 ? 1 : 2;
             }
 
             if (oldValue != window.zoomValue) {
@@ -382,7 +382,7 @@ window.setZoomH = function () {
     var zoomHPrompt = window.prompt(zoomValueTxt);
     if (zoomHPrompt !== null && zoomHPrompt.length != 0) {
         zoomHPrompt = Number(zoomHPrompt);
-        if (zoomHPrompt > 60) alert(zoomValueH); else if (zoomHPrompt < 10) alert(zoomValueL); else if (zoomHPrompt.toString() == "NaN") alert(zoomValueInvalid); else {
+        if (zoomHPrompt > 60) alert(zoomValueH); else if (zoomHPrompt < 5) alert(zoomValueL); else if (zoomHPrompt.toString() == "NaN") alert(zoomValueInvalid); else {
             window.zoomValue = zoomHPrompt;
             localStorage.setItem("zoomValTBM", zoomHPrompt);
         }
