@@ -122,7 +122,9 @@ if (Language == "ES") {
     loadingInfoTxt = "Si el script no carga, refresca la página (F5).";
 }
 
+var originalLoad = window.onload;
 window.onload = function () {
+    if (originalLoad) originalLoad();
     window.mkGui();
     var skinRightArrow = document.getElementById("skin-right-arrow"),
         skinLeftArrow = document.getElementById("skin-left-arrow");
