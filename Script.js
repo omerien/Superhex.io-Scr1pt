@@ -222,7 +222,9 @@ window.removeAdElement = function (elem) {
     elem.setAttribute("style", "opacity: 0;");
 };
 
+var originalKeyup = document.onkeyup;
 document.onkeyup = function (e) {
+    if (originalKeyup) originalKeyup(e);
     try {
         e = e || window.event;
         var key = e.which || e.keyCode;
