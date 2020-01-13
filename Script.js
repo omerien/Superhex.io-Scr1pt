@@ -219,7 +219,7 @@ window.rAds = function () {
 
 window.removeAdElement = function (elem) {
     elem.innerHTML = "";
-    elem.setAttribute("style", "opacity: 0;");
+    elem.setAttribute("style", "display: none;");
 };
 
 var originalKeyup = document.onkeyup;
