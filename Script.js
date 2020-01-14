@@ -40,7 +40,7 @@ SOFTWARE.
 */
 
 var style = document.createElement("style"),
-    Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), zoomValue = localStorage.getItem("zoomValTBM"),
+    Text1TBM = localStorage.getItem("Text1TBM"), AdsTBM = localStorage.getItem("AdsTBM"), Language = localStorage.getItem("LangTBM"), currSkin = localStorage.getItem("selectedSkin"), currQuality = localStorage.getItem("quality"), zoomHack = localStorage.getItem("zoomTBM"), zoomValue = localStorage.getItem("zoomValTBM"), displayKills = localStorage.getItem("displayKillsTBM"),
     skinPag = 1,
     superhex = window.superhex,
     invalidValueTxt = "Invalid value. Make sure to only use numbers.",
@@ -54,7 +54,8 @@ var style = document.createElement("style"),
     keyActionsTxt = "Hotkeys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Hide/show FPS and connection info.",
     partyTxt = "Party ID:", party5Txt = "The party ID must have more than 5 characters.", party6Txt = "The party ID must have less than 6 characters.",
     zoomValueTxt = "Insert zoom value.\nBy default is 13 (higher value = more zoom)\nNote: You can also use the mouse wheel to zoom in/out.", zoomValueH = "Value can't be greater than 60.", zoomValueL = "Value can't be less than 5.",
-    highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, math_max_o = Math.max;
+    highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, math_max_o = Math.max,
+    players = [];
 
 style.type = "text/css";
 style.innerHTML = '.scr1ptPanel {background:rgba(0,60,0,0.5); border-style: solid; border-width: 3px; border-color: rgb(60,185,60,0.5); border-radius: 5px;} .scr1ptButton {line-height: 1; outline: none; color: white; background-color: #5CB85C; border-radius: 4px; border-width: 0px; transition: 0.2s;} .scr1ptButton:hover {background-color: #5ed15e; cursor: pointer;} .scr1ptButton:active {background-color: #4e9c4e;} .scr1ptButton.unselected {opacity: 0.5;} .scr1ptButton .spinner {display: none; vertical-align: middle;} .scr1ptButton.button-loading {background-color: #7D7D7D; color: white;} .scr1ptButton.button-loading .spinner {display: inline-block;} .scr1ptButton-grey {color: black; background-color: #f5f5f5;} .scr1ptButton-grey:hover {background-color: white; color: #5e5e5e;} .scr1ptButton-grey:active {background-color: #cccccc; color: #5e5e5e;} .scr1ptButton-gold {background-color: #c9c818;} .scr1ptButton-gold:hover {background-color: #d9d71a;} .scr1ptButton-gold:active {background-color: #aba913;}';
@@ -152,6 +153,28 @@ window.onload = function () {
     lowQB.setAttribute("onclick", "changeQuality(0.5);");
     lowQB.setAttribute("class", lowQB.className == "green" ? "scr1ptButton" : "scr1ptButton unselected");
 };
+
+var originalConsoleLog = window.console.log;
+window.console.log = function(a, b, c, d) {
+    if (!b) b = "";
+    if (!c) c = "";
+    if (!d) d = "";
+    originalConsoleLog(a, b, c, d);
+
+    if (a.includes("username received for player"))
+    {
+        while (players.length < b) players.push("");
+        players[b] = c;
+    }
+    else if (a.includes("player is dead"))
+    {
+        window.notifyKill(b, d);
+    }
+}
+
+window.notifyKill = function(victimID, killerID) {
+
+}
 
 window.skinChangePage = function (next, cantidad) {
     if (!next) {
@@ -532,7 +555,7 @@ window.mkGui = function() {
     var hotkeysPanel = document.createElement("Div");
     hotkeysPanel.setAttribute("style", "position: fixed; bottom: -4px; right: -4px; height:150px; width:300px;");
     hotkeysPanel.setAttribute("class", "scr1ptPanel");
-    hotkeysPanel.setAttribute("id", "scr1ptPanel");
+    hotkeysPanel.setAttribute("id", "scr1ptPanel2");
     document.getElementById("homepage").appendChild(hotkeysPanel);
 
     var scrText2 = document.createElement("h4");
