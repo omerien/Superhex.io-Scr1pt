@@ -157,12 +157,15 @@ window.onload = function () {
 };
 
 var originalConsoleLog = window.console.log;
-window.console.log = function(a, b, c, d) {
+window.console.log = function(a, b, c, d, e, f, g) {
     if (!a) a = "";
     if (!b) b = "";
     if (!c) c = "";
     if (!d) d = "";
-    originalConsoleLog(a, b, c, d);
+    if (!e) e = "";
+    if (!f) f = "";
+    if (!g) g = "";
+    originalConsoleLog(a, b, c, d, e, f, g);
 
     if (a.includes("username received for player"))
     {
