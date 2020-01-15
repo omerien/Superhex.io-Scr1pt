@@ -98,6 +98,7 @@ window.changeLang = function(write, ing) {
         document.getElementById("btn5").innerText = "Texto del botón Play";
         document.getElementById("check1Text").innerText = "Remover anuncios";
         document.getElementById("check2Text").innerText = "Hack de Zoom";
+        document.getElementById("check3Text").innerText = "Mostrar muertes";
         document.getElementById("btn6").innerText = "Desbloquear skins";
         document.getElementById("btn7").innerText = "English (Inglés)";
         document.getElementById("btn7").setAttribute("onclick", "changeLang(false, true);");
