@@ -54,6 +54,7 @@ var style = document.createElement("style"),
     keyActionsTxt = "Hotkeys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Hide/show FPS and connection info.",
     partyTxt = "Party ID:", party5Txt = "The party ID must have more than 5 characters.", party6Txt = "The party ID must have less than 6 characters.",
     zoomValueTxt = "Insert zoom value.\nBy default is 13 (higher value = more zoom)\nNote: You can also use the mouse wheel to zoom in/out.", zoomValueH = "Value can't be greater than 60.", zoomValueL = "Value can't be less than 5.",
+    diedTxt = " died", killedByTxt = " killed by ", killedHimselfTxt = " killed himself",
     highQB, mediumQB, lowQB, playBtn, playAgBtn, mMenuBtn, math_max_o = Math.max,
     players = [];
 
@@ -109,6 +110,7 @@ window.changeLang = function(write, ing) {
         highQB.innerText = "Alta";
         mediumQB.innerText = "Media";
         lowQB.innerText = "Baja";
+        diedTxt = " murió"; killedByTxt = " asesinado por "; killedHimselfTxt = " se mató a si mismo";
         Language = "ES";
         if (write) {
             localStorage.setItem('LangTBM', 'ES');
@@ -156,6 +158,7 @@ window.onload = function () {
 
 var originalConsoleLog = window.console.log;
 window.console.log = function(a, b, c, d) {
+    if (!a) a = "";
     if (!b) b = "";
     if (!c) c = "";
     if (!d) d = "";
@@ -172,9 +175,22 @@ window.console.log = function(a, b, c, d) {
     }
 }
 
-window.notifyKill = function(victimID, killerID) {
+window.notifyKill = function (victimID, killerID) {
+    if (players[victimID] == null || players[victimID].length == 0) return;
 
-}
+    var msg = players[victimID] + killedByTxt + players[killerID];
+    if (victimID == killerID) msg = players[victimID] + killedHimselfTxt;
+    else if (killerID.toString().trim().length == 0) msg = players[victimID] + diedTxt;
+
+    var lines = document.getElementById("killsText").innerText.split("\n");
+    if (lines.length > 5)
+    {
+        lines.splice(0,1);
+        document.getElementById("killsText").innerText = lines.join('\n');
+    }
+
+    document.getElementById("killsText").innerText += "\n" + msg;
+};
 
 window.skinChangePage = function (next, cantidad) {
     if (!next) {
@@ -563,4 +579,9 @@ window.mkGui = function() {
     scrText2.setAttribute("id", "scrText2");
     scrText2.innerText = keyActionsTxt;
     hotkeysPanel.appendChild(scrText2);
+
+    var killsText = document.createElement("h4");
+    killsText.setAttribute("style", "color: rgba(255,255,255,0.6); position: fixed; text-align: center; right: 10px; bottom: 0px; z-index: 1;");
+    killsText.setAttribute("id", "killsText");
+    window.document.body.appendChild(killsText);
 };
