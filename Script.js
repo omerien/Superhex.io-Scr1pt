@@ -172,7 +172,7 @@ window.console.log = function(a, b, c, d, e, f, g) {
         while (players.length < b) players.push("");
         players[b] = c;
     }
-    else if (a.includes("player is dead"))
+    else if (a.includes("player is dead") && displayKills == "1")
     {
         window.notifyKill(b, d);
     }
@@ -436,6 +436,16 @@ window.setZoomH = function () {
     }
 };
 
+window.toggleDisplayKills = function () {
+    if (displayKills == "1") {
+        localStorage.setItem("displayKillsTBM", "0");
+        displayKills = "0";
+    } else {
+        localStorage.setItem("displayKillsTBM", "1");
+        displayKills = "1";
+    }
+}
+
 var scrText1 = document.createElement("h2");
 scrText1.setAttribute("style", "color: white; position: fixed; top: 70px; left: 5px;");
 scrText1.innerText = loadingScriptTxt;
@@ -570,6 +580,21 @@ window.mkGui = function() {
     btnZHS.setAttribute("id", "btnZHS");
     btnZHS.setAttribute("onclick", "setZoomH();");
     mainPanel.appendChild(btnZHS);
+
+    var check3 = document.createElement("INPUT");
+    check3.setAttribute("type", "checkbox");
+    check3.setAttribute("id", "check3");
+    check3.setAttribute("style", "position: absolute; top: 310px; left: 15px;");
+    check3.setAttribute("onclick", "toggleDisplayKills();");
+    mainPanel.appendChild(check3);
+
+    check3.checked = displayKills == "1";
+
+    var check3Text = document.createElement("h5");
+    check3Text.setAttribute("style", "color: white; position: absolute; top: 290px; left: 35px;");
+    check3Text.setAttribute("id", "check3Text");
+    check3Text.innerText = "Show kills";
+    mainPanel.appendChild(check3Text);
 
     var hotkeysPanel = document.createElement("Div");
     hotkeysPanel.setAttribute("style", "position: fixed; bottom: -4px; right: -4px; height:150px; width:300px;");
