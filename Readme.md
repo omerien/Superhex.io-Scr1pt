@@ -13,5 +13,3 @@
 Only tested on Google Chrome.
 
 ## ✳️  View on [GreasyFork](https://greasyfork.org/es/scripts/36071-superhex-io-scr1pt)
-
-## ✳️  [Donate/Donar](https://www.paypal.me/TBM13)
