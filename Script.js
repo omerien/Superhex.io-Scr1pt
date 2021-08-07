@@ -3,12 +3,12 @@
 // @namespace    Superhex.io Scr1pt
 // @version      1.9.2
 // @license      MIT
-// @homepageURL  https://github.com/TBM13/Superhex.io-Scr1pt
+// @homepageURL  https://github.com/omerien/Superhex.io-Scr1pt
 // @contributionURL https://www.paypal.me/tbm13
 // @icon         http://superhex.io/img/fav_icon_1.png
 // @description  Mod for Superhex.io
 // @description:es-ES Mod para Superhex.io
-// @author       TBM13
+// @author       TBM13 (modified by omerien)
 // @match        *://superhex.io/*
 // @match        www.superhex.io/*
 // @grant        none
@@ -292,7 +292,7 @@ document.onkeyup = function (e) {
     }
 };
 
-window.goGitHub = function () { window.open("https://github.com/TBM13/Superhex.io-Scr1pt"); };
+window.goGitHub = function () { window.open("https://github.com/omerien/Superhex.io-Scr1pt"); };
 
 window.goGreasyFork = function () { window.open("https://greasyfork.org/es/scripts/36071-superhex-io-scr1pt"); };
 
@@ -403,24 +403,6 @@ window.zoomH = function (message) {
     } else {
         Math.max = function (a, b) {
             return a == window.innerWidth / 40 / 2 / .75 && b == window.innerHeight / 40 / Math.sqrt(3) ? window.zoomValue : math_max_o(a, b);
-        };
-        if (message) localStorage.setItem("zoomTBM", "True");
-        document.onmousewheel = function(e) {
-            var delta;
-            if (!e) e = window.event;
-            if (e.wheelDelta) delta = e.wheelDelta / 60; else if (e.detail) delta = -e.detail / 2;
-
-            var oldValue = window.zoomValue;
-            if (delta !== null && delta > 0) {
-               if (window.zoomValue < 60) window.zoomValue += window.zoomValue < 16 ? 1 : 2;
-            } else {
-               if (window.zoomValue > 5) window.zoomValue -= window.zoomValue < 16 ? 1 : 2;
-            }
-
-            if (oldValue != window.zoomValue) {
-                window.dispatchEvent(new Event('resize'));
-                localStorage.setItem("zoomValTBM", window.zoomValue);
-            }
         };
     }
     zoomHack = localStorage.getItem("zoomTBM");
