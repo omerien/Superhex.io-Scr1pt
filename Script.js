@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Superhex.io Scr1pt - Zoom Hack and more
-// @namespace    Superhex.io Scr1pt
+// @name         Superhex.io Scr1pt - Zoom Hack and more (omerien's fork)
+// @namespace    Superhex.io Scr1pt (omerien's fork)
 // @version      1.9.2
 // @license      MIT
 // @homepageURL  https://github.com/omerien/Superhex.io-Scr1pt
@@ -49,7 +49,7 @@ var style = document.createElement("style"),
     sChangeTxt = "Skin ID:", sInvalidTxt = "Invalid ID. Make sure to only use numbers.", sChangedTxt = "Skin changed.", sErrorTxt = "An error has occurred. Make sure to insert a valid ID.", sTheSTxt = "The skin doesn't exist.",
     pTextTxt = "Play button text:",
     sUnlockekdTxt = "You already unlocked the skins.", sUnlockedsTxt = "The following skins were unlocked:", sChickenTxt = "Yellow chicken", sBirdTxt = "Light blue bird", sCowTxt = "Cow", sBird2Txt = "Red bird", sElephantTxt = "Elephant",
-    loadingScriptTxt = "Loading Superhex.io Scr1pt...", loadingInfoTxt = "If the script doesn't load, refresh the website (F5).",
+    loadingScriptTxt = "Loading Superhex.io Scr1pt (omerien's fork)...", loadingInfoTxt = "If the script doesn't load, refresh the website (F5).",
     sAlreadyTxt = "You are already using the skin ",
     keyActionsTxt = "Hotkeys:\n\n1 = Hide/show Leaderboard.\n0 = Hide/show UI.\n2 = Hide/show FPS and connection info.",
     partyTxt = "Party ID:", party5Txt = "The party ID must have more than 5 characters.", party6Txt = "The party ID must have less than 6 characters.",
