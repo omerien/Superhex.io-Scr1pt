@@ -1,7 +1,7 @@
 # Superhex.io Scr1pt
 
 <b>🔰 This script has the following features:</b>
-* Zoom Hack (with mouse wheel support).
+* Zoom Hack (withOUT mouse wheel support).
 * Custom Quality control (you can change the game quality to any value).
 * Ads blocker.
 * Skins unlocker.
@@ -11,5 +11,7 @@
 * Available in English and Spanish.
 
 Only tested on Google Chrome.
+
+This is a modified version. The original is at TBM13/Superhex.io-Scr1pt.
 
 ## ✳️  View on [GreasyFork](https://greasyfork.org/es/scripts/36071-superhex-io-scr1pt)
